@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="report_invoice_document"
+        inherit_id="account_invoice_report_grouped_by_picking.report_invoice_document"
+        priority="99"
+    >
+
+        <xpath expr="//span[@t-field='picking.sale_id.name']" position="replace">
+        </xpath>
+        <xpath expr="//t[@t-if='picking.sale_id.client_order_ref']" position="replace">
+        </xpath>
+        <xpath expr="//tr[@t-if='picking']/td/strong/span[1]" position="after">
+            <t t-if="picking.sale_id">
+                <span t-field="picking.sale_id.name" />
+                <t t-if="picking.sale_id.client_order_ref">
+                    <span t-translation="off"> (</span>
+                    <span t-field="picking.sale_id.client_order_ref" />
+                    <span t-translation="off">)</span>
+                </t>
+            </t>
+            <t t-if="picking.purchase_id">
+                <span t-field="picking.purchase_id.name" />
+                <t t-if="picking.purchase_id.partner_ref">
+                    <span t-translation="off"> (</span>
+                    <span t-field="picking.purchase_id.partner_ref" />
+                    <span t-translation="off">)</span>
+                </t>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>
