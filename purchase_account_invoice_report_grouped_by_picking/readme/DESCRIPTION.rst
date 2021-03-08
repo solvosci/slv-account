@@ -1,0 +1,1 @@
+Adds support for purchase invoices to invoice report grouped by picking
