@@ -1,1 +1,3 @@
 account-invoicing
+account-invoice-reporting
+slv-stock-priv https://github.com/solvosci/slv-stock-priv 13.0-add-purchase_stock_picking_invoice_link
