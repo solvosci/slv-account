@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_batch_invoicing_tree_view" model="ir.ui.view">
+        <field name="name">purchase.order.tree (purchase_batch_invoicing)</field>
+        <field name="model">purchase.order</field>
+        <field eval="20" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="state" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="amount_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="purchase_batch_invoicing_advanced_tree_view" model="ir.ui.view">
+        <field name="name">purchase.order.tree (advanced)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase_batch_invoicing_tree_view" />
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="order_type"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="purchase_batch_invoicing_form_view_inherit" model="ir.ui.view">
+        <field name="name">purchase.batch.invoicing.form (advanced)</field>
+        <field name="model">purchase.batch_invoicing</field>
+        <field name="inherit_id" ref="purchase_batch_invoicing.wizard_purchase_batch_invoicing_view" />
+        <field name="arch" type="xml">
+            <field name="purchase_order_ids" position="attributes">
+                <attribute name="context">{'tree_view_ref':'purchase_batch_invoicing_advanced.purchase_batch_invoicing_tree_view'}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
