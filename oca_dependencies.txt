@@ -1,3 +1,4 @@
 account-invoicing
 account-invoice-reporting
+account-payment
 slv-stock-priv
