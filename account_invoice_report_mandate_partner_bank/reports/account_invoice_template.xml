@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template
+        id="report_invoice_document"
+        inherit_id="account.report_invoice_document"
+    >
+        <xpath expr="//p[@name='payment_communication']" position="after">
+            <p
+                t-if="o.move_type in ('out_invoice', 'in_refund') and o.mandate_id.partner_bank_id"
+                name="payment_mandate_partner_bank"
+            >
+                <span t-field="o.payment_mode_id"/>
+                to the following account:
+                <b><span t-field="o.mandate_id.partner_bank_id"/></b>
+            </p>
+        </xpath>
+    </template>
+</odoo>
