@@ -1,4 +1,5 @@
 account-invoicing
 account-invoice-reporting
 account-payment
+slv-sale https://github.com/solvosci/slv-sale
 slv-stock-priv
