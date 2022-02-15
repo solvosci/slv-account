@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_invoice_tree" model="ir.ui.view">
+        <field name="name">
+            account.invoice.tree (in account_move_accounting_date_tree)
+        </field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <field name="invoice_origin" position="before">
+                <field
+                    name="date"
+                    optional="show"
+                    string="Accounting Date"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter" model="ir.ui.view">
+        <field name="name">
+            account.invoice.select (in account_move_accounting_date_tree)
+        </field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <filter name="invoice_date" position="after">
+                <filter name="date" string="Accounting Date" date="date"/>
+            </filter>
+            <filter name="invoicedate" position="after">
+                <filter
+                    string="Accounting Date"
+                    name="groupby_date"
+                    context="{'group_by': 'date'}"
+                />
+            </filter>
+        </field>
+    </record>
+</odoo>
