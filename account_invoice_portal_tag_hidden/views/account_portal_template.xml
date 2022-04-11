@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_invoices_inherit" name="Portal Tags Invoices Hidden" inherit_id="account.portal_my_invoices">
+        <xpath expr="//t[@t-call='portal.portal_table']/thead/tr/th[4]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//t[@t-foreach='invoices']/tr/td[4]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+
+</odoo>
