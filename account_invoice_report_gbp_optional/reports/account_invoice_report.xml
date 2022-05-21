@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="account_invoices_gbp" model="ir.actions.report">
+            <field name="name">Invoices (with picking grouping)</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">account_invoice_report_gbp_optional.report_invoice_with_payments_gbp</field>
+            <field name="report_file">account_invoice_report_gbp_optional.report_invoice_with_payments_gbp</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id" eval="[(4, ref('account.group_account_invoice')),
+ (4, ref('account.group_account_readonly'))]"/>
+        </record>
+
+        <record id="account_invoices_without_payment_gbp" model="ir.actions.report">
+            <field name="name">Invoices without Payment (with picking grouping)</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">account_invoice_report_gbp_optional.report_invoice_gbp</field>
+            <field name="report_file">account_invoice_report_gbp_optional.report_invoice_gbp</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
