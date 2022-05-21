@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_report_gbp_optional
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-21 08:17+0000\n"
+"PO-Revision-Date: 2022-05-21 08:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_invoice_report_gbp_optional
+#: model:ir.actions.report,print_report_name:account_invoice_report_gbp_optional.account_invoices_gbp
+#: model:ir.actions.report,print_report_name:account_invoice_report_gbp_optional.account_invoices_without_payment_gbp
+msgid "(object._get_report_base_filename())"
+msgstr ""
+
+#. module: account_invoice_report_gbp_optional
+#: model:ir.actions.report,name:account_invoice_report_gbp_optional.account_invoices_gbp
+msgid "Invoices (with picking grouping)"
+msgstr ""
+
+#. module: account_invoice_report_gbp_optional
+#: model:ir.actions.report,name:account_invoice_report_gbp_optional.account_invoices_without_payment_gbp
+msgid "Invoices without Payment (with picking grouping)"
+msgstr ""
