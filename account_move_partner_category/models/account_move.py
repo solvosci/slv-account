@@ -7,7 +7,7 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     partner_category_ids = fields.Many2many(
-        related="partner_id.category_id",
+        related="commercial_partner_id.category_id",
     )
     partner_category_count = fields.Integer(
         compute="_compute_partner_categories",
