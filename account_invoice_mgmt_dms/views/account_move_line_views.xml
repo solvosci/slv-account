@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_payments_tree" model="ir.ui.view">
+        <field name="name">account.move.line.form</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list.view_payments_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='full_reconcile_id']" position="after">
+                <field name="state_complete_proceesing" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
