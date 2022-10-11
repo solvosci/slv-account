@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_invoice_document_atm" inherit_id="account.report_invoice_document" priority="20">
+        <xpath expr="//div/h2" position="before">
+            <t t-if="o.atm_invoice">
+                <div class="row justify-content-end mb16">
+                    <div class="col-6" name="right_box">
+                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.encrypted_name_lower, 600, 100)" style="width:300px;height:50px;" alt="Barcode"/>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

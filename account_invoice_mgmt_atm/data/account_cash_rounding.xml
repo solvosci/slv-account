@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_cash_rounding_default" model="account.cash.rounding">
+        <field name="name">Account Rounding 10 cents</field>
+        <field name="rounding">0.10</field>
+        <field name="strategy">add_invoice_line</field>
+        <field name="rounding_method">HALF-UP</field>
+    </record>
+
+</odoo>
