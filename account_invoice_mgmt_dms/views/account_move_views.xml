@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_account_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page id="find_on_invoid" string="Invoice Info">
+                    <group>
+                        <group>
+                            <field name="complete_proceesing_id" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+                            <field name="state_complete_proceesing" />
+                            <field name="decline_reason_complete_proceesing" attrs="{'invisible': [('state_complete_proceesing', '!=', 'declined')]}"/>
+                        </group>
+                        <group>
+                            <field name="rating_complete_proceesing" widget="priority" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+                            <field name="note_complete_proceesing" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="ocr_doc" />
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_dms_files"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file"
+                    attrs="{'invisible': [('dms_file_count', '=', 0)]}">
+                    <field name="dms_file_count" widget="statinfo" string="DMS File"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <field name="ref" invisible="1"/>
+                <button
+                    name="open_wizard_dms_extra_file"
+                    string="Add Extra Documents"
+                    type="object"
+                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
+                <button
+                    name="open_wizard_dms_file"
+                    string="Add Partner Invoice"
+                    type="object"
+                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
+                <button 
+                    name="create_dms_file_document_manager"
+                    string="Generate Document Manager"
+                    type="object"
+                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_move_tree_inherit" model="ir.ui.view">
+        <field name="name">account.move.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="state_complete_proceesing" />
+                <field name="complete_proceesing_id" invisible="1"/>
+                <field name="rating_complete_proceesing" widget="priority" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_move_search_inherit" model="ir.ui.view">
+        <field name="name">account.move.search</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="ocr_doc" />
+            </xpath>
+            <xpath expr="//filter[@name='due_date']" position="after">
+                <separator/>
+                <filter name="state_complete_proceesing_pending" string="Pending to approve" domain="[('state_complete_proceesing', '=', 'pending')]"/>
+                <filter name="state_complete_proceesing_approved" string="Approved" domain="[('state_complete_proceesing', '=', 'approved')]"/>
+                <filter name="state_complete_proceesing_declined" string="Declined" domain="[('state_complete_proceesing', '=', 'declined')]"/>
+            </xpath>
+            <xpath expr="//filter[@name='duedate']" position="after">
+                <filter string="Doc State" name="state_complete_proceesing_group_by" context="{'group_by': 'state_complete_proceesing'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

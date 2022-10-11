@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_stock_move_dms_form" model="ir.actions.act_window">
+        <field name="name">DMS files</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dms.file</field>
+        <field name="view_mode">form</field>
+        <field name="domain">[('content', '!=', False)]</field>
+    </record>
+
+    <record id="view_dms_file_form_inherit" model="ir.ui.view">
+        <field name="name">dms.file.form</field>
+        <field name="model">dms.file</field>
+        <field name="inherit_id" ref="dms.view_dms_file_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button 
+                    name="approve_account_move"
+                    string="Approve"
+                    class="btn-primary"
+                    attrs="{'invisible': [('state_account_move', '!=', 'pending')]}"
+                    type="object"
+                />
+                <button 
+                    name="decline_account_move"
+                    string="Decline"
+                    class="btn-primary"
+                    attrs="{'invisible': [('state_account_move', '!=', 'pending')]}"
+                    type="object"
+                />
+            </xpath>
+            <xpath expr="//page[@name='page_access']" position="after">
+                <page id="invoice_info" string="Invoice Data">
+                    <group name="Group Invoice Raw Data">
+                        <field name="account_move_id" />
+                        <field name="note" />
+                        <field name="ocr_doc" />
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='content']" position="after">
+                <field name="rating" widget="priority"/>
+                <field name="proceeding" />
+                <field name="complete_proceeding" invisible="1"/>
+                <field name="state_account_move" attrs="{'invisible': [('complete_proceeding', '=', False)]}"/>
+                <field name="decline_reason" attrs="{'invisible': [('state_account_move', '!=', 'declined')]}" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_dms_file_search_inherit" model="ir.ui.view">
+        <field name="name">dms.file.search</field>
+        <field name="model">dms.file</field>
+        <field name="inherit_id" ref="dms.search_dms_file" />
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='name']" position="after">
+                <field name="proceeding" />
+                <field name="ocr_doc" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

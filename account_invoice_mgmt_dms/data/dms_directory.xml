@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="dms_directory_proceeding" model="dms.directory">
+            <field name="name">Proceeding</field>
+            <field name="is_root_directory">TRUE</field>
+            <field name="storage_id" ref="dms_storage_document_manager"/>
+            <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
+        </record>
+   
+        <record id="dms_directory_complete_proceeding" model="dms.directory">
+            <field name="name">1.- Complete Proceeding</field>
+            <field name="is_root_directory">FALSE</field>
+            <field name="parent_id" ref="dms_directory_proceeding"/>
+            <field name="storage_id" ref="dms_storage_document_manager"/>
+            <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
+        </record>
+
+        <record id="dms_directory_puchase_invoice" model="dms.directory">
+            <field name="name">2.- Purchase Invoice</field>
+            <field name="is_root_directory">FALSE</field>
+            <field name="parent_id" ref="dms_directory_proceeding"/>
+            <field name="storage_id" ref="dms_storage_document_manager"/>
+            <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
+        </record>
+
+        <record id="dms_directory_carrier_doc" model="dms.directory">
+            <field name="name">3.- Carrier Doc.</field>
+            <field name="is_root_directory">FALSE</field>
+            <field name="parent_id" ref="dms_directory_proceeding"/>
+            <field name="storage_id" ref="dms_storage_document_manager"/>
+            <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
+        </record>
+
+        <record id="dms_directory_extra_doc" model="dms.directory">
+            <field name="name">4.- Extra Doc.</field>
+            <field name="is_root_directory">FALSE</field>
+            <field name="parent_id" ref="dms_directory_proceeding"/>
+            <field name="storage_id" ref="dms_storage_document_manager"/>
+            <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
+        </record>
+
+    </data>
+</odoo>

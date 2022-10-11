@@ -1,0 +1,530 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_mgmt_dms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-16 09:15+0000\n"
+"PO-Revision-Date: 2024-02-16 10:16+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.1.1\n"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#, python-format
+msgid "/Reports/Processed/"
+msgstr "/Informes/Procesadas/"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#: code:addons/account_invoice_mgmt_dms/wizards/account_move_dms_file_wizard.py:0
+#, python-format
+msgid "/Reports/Purchase Invoices/"
+msgstr "/Informes/Facturas de compra/"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "<b>Subtotal: </b>"
+msgstr "<b>Subtotal </b>"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_weight_dms_form_inherit
+msgid ""
+"<span class=\"o_stat_value\"/>\n"
+"                        <span class=\"o_stat_text\">Carrier Doc</span>"
+msgstr ""
+"<span class=\"o_stat_value\"/>\n"
+"                        <span class=\"o_stat_text\">Doc Trasporte</span>"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "<span><b>Attachment:</b></span>"
+msgstr "<span><b>Documentos:</b></span>"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "<span><b>Confirm Date:</b></span>"
+msgstr "<span><b>Fecha de confirmación:</b></span>"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "<span><b>Partner:</b></span>"
+msgstr "<span><b>Proveedor:</b></span>"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_breadcrumbs
+msgid "<span>Classification Purchase</span>"
+msgstr "<span>Albaranes</span>"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__account_move_id
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__account_move_id
+msgid "Account Move"
+msgstr "Factura"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Add Attachment"
+msgstr "Adjuntar documento"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
+#, python-format
+msgid "Add Extra Docs"
+msgstr "Adjuntar documentos adicionales"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_extra_file_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
+msgid "Add Extra Documents"
+msgstr "Adjuntar documentos adicionales"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_file_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
+#, python-format
+msgid "Add Partner Invoice"
+msgstr "Adjuntar factura de proveedor"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_form_inherit
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#, python-format
+msgid "Approve Invoice"
+msgstr "Factura aprobada"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__account_move__state_complete_proceesing__approved
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__state_account_move__approved
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_search_inherit
+msgid "Approved"
+msgstr "Aprobada"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__dms_file
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__dms_file
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__dms_file
+msgid "Attachment"
+msgstr "Documento"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_extra_file_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_file_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_decline_account_move_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_dms_file_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/stock_move.py:0
+#, python-format
+msgid "Carrier Doc"
+msgstr "Doc Transportista"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move__carrier_doc_count
+msgid "Carrier Doc Count"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_breadcrumbs
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_tree
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_home_clasification_purchase
+msgid "Classification Purchase"
+msgstr "Albaranes"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Classification Purchase Items"
+msgstr "Elemento de albaranes"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__complete_proceeding
+msgid "Complete Proceeding"
+msgstr "Expediente completo"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__complete_proceesing_id
+msgid "Complete Proceesing"
+msgstr "Expediente completo"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
+#, python-format
+msgid "DMS File"
+msgstr "Documentos"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.actions.act_window,name:account_invoice_mgmt_dms.view_stock_move_dms_form
+msgid "DMS files"
+msgstr "Documentos"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_tree
+msgid "Date"
+msgstr "Fecha"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#, python-format
+msgid "Date End"
+msgstr "Fecha Hasta"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#, python-format
+msgid "Date Start"
+msgstr "Fecha Desde"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_decline_account_move_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_form_inherit
+msgid "Decline"
+msgstr "Rechazar"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/wizards/dms_file_decline_account_move_wizard.py:0
+#, python-format
+msgid "Decline Invoice, reason: %s"
+msgstr "Factura rechazada, motivo: %s"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_decline_account_move_wizard
+#, python-format
+msgid "Decline Purchase Invoice"
+msgstr "Rechazar factura de compra"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__decline_reason_complete_proceesing
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__decline_reason
+msgid "Decline Reason"
+msgstr "Motivo"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__account_move__state_complete_proceesing__declined
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__state_account_move__declined
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_search_inherit
+msgid "Declined"
+msgstr "Rechazada"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__dms_file_ids
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__dms_file_id
+msgid "Dms File"
+msgstr "Documento"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__dms_file_count
+msgid "Dms File Count"
+msgstr "Recuento Archivos Dms"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__dms_file_name
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__dms_file_name
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__dms_file_name
+msgid "Dms File Name"
+msgstr "Nombre archivo DMS"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__state_account_move
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_search_inherit
+msgid "Doc State"
+msgstr "Estado DOC"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_dms_file
+msgid "File"
+msgstr "Documento"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
+msgid "Generate Document Manager"
+msgstr "Generar documentación"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__rating__2
+msgid "Hight"
+msgstr "Alta"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__ocr_doc
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__ocr_doc
+msgid "Invoice Content"
+msgstr "Contenido OCR"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_form_inherit
+msgid "Invoice Data"
+msgstr "Datos de la factura"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__account_move_id
+msgid "Invoice Files"
+msgstr "Factura"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
+msgid "Invoice Info"
+msgstr "Información documental"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_account_move
+msgid "Journal Entries"
+msgstr "Apuntes contables"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_account_move_line
+msgid "Journal Item"
+msgstr "Elemento de tarifa"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard____last_update
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard____last_update
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard____last_update
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_file_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_dms_file_wizard
+msgid "Link"
+msgstr "Guardar"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/stock_move.py:0
+#, python-format
+msgid "Link Scale Weight with DMS"
+msgstr "Adjuntar documentación trasporte"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__rating__0
+msgid "Low"
+msgstr "Baja"
+
+#. module: account_invoice_mgmt_dms
+#: model:dms.access.group,name:account_invoice_mgmt_dms.dms_access_group_manager
+msgid "Manager"
+msgstr "Administrador"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_tree
+msgid "Name"
+msgstr "Nombre"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__rating__1
+msgid "Normal"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__note_complete_proceesing
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__note
+msgid "Note"
+msgstr "Observaciones"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__account_move__state_complete_proceesing__pending
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__state_account_move__pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_search_inherit
+msgid "Pending to approve"
+msgstr "Pendiente de aprobación"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_purchase_order__post_portal
+msgid "Post Portal"
+msgstr "Publicado en el portal"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.actions.server,name:account_invoice_mgmt_dms.action_purchase_order_post_to_portal
+msgid "Post to portal"
+msgstr "Publicar en el portal"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__proceeding
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_dms_file_wizard
+msgid "Proceeding"
+msgstr "Expediente"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#, python-format
+msgid "Processed/"
+msgstr "Procesadas/"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Product"
+msgstr "Producto"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de Compra"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__rating_complete_proceesing
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__rating
+msgid "Rating"
+msgstr "Prioridad"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file_decline_account_move_wizard__reason
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_extra_file_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_file_wizard
+msgid "Save"
+msgstr "Guardar"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.actions.server,name:account_invoice_mgmt_dms.cron_ir_actions_server
+#: model:ir.cron,cron_name:account_invoice_mgmt_dms.cron
+#: model:ir.cron,name:account_invoice_mgmt_dms.cron
+msgid "Scan Files And Save OCR"
+msgstr "Escanear facturas y guardar OCR"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__state_complete_proceesing
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_line__state_complete_proceesing
+msgid "State Complete Proceesing"
+msgstr "Estado DOC"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_stock_move
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__stock_move_id
+msgid "Stock Move"
+msgstr "Movimiento de Inventario"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Subtotal"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__ticket_name
+msgid "Ticket Name"
+msgstr "Nombre del tique"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_tree
+msgid "Total"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Upload"
+msgstr "Guardar"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_weight_dms_form_inherit
+msgid "Upload Carrier Doc"
+msgstr "Adjuntar documentación trasporte"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_dms_file_wizard
+msgid "Upload Carrier Documentation"
+msgstr "Adjuntar documentación trasporte"
+
+#. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.portal_my_clasification_purchase_form
+msgid "Upload files!"
+msgstr "Guardar"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__rating__3
+msgid "Very Hight"
+msgstr "Muy alta"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_account_move_dms_extra_file_wizard
+msgid "account.move.dms.extra.file.wizard"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_account_move_dms_file_wizard
+msgid "account.move.dms.file.wizard"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_dms_file_decline_account_move_wizard
+msgid "dms.file.decline.account.move.wizard"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_stock_move_dms_file_wizard
+msgid "stock.move.dms.file.wizard"
+msgstr ""
