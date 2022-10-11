@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_move_form" model="ir.ui.view">
+        <field name="name">Account Move (ATM)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']/.." position="after">
+                <field name="encrypted_name_lower" attrs="{'invisible': [('atm_invoice', '=', False)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="atm_invoice" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

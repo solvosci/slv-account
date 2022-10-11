@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_view_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_confirm']" position="after">
+                <button
+                    type="object"
+                    name="generate_invoice_purchase_report"
+                    class="oe_highlight"
+                    string="Print ATM Button"
+                    attrs="{'invisible':[('invoice_count', '=', 0)]}"/>
+            </xpath>
+            <xpath expr="//button[@name='action_view_invoice']" position="after">
+                <button 
+                    name="create_atm_account_move"
+                    id="account_invoice_ATM_btn"
+                    type="object"
+                    class="oe_highlight"
+                    context="{'create_bill':True}"
+                    attrs="{'invisible': ['|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'in', ('no', 'invoiced'))]}"
+                    string="Create Invoice to ATM"/>
+            </xpath>
+            <xpath expr="//button[@name='button_cancel']" position="before">
+                <button
+                    name="create_atm_account_move"
+                    id="account_invoice_ATM_btn"
+                    type="object"
+                    attrs="{'invisible': ['|', '|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'not in', ('no', 'invoiced')), ('order_line', '=', [])]}"
+                    string="Create Invoice to ATM"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
