@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="res_company_temp_ATM_config" model="ir.ui.view">
+    <field name="name">res.company ATM temp</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//page" position="after">
+            <page name="ATM_config" string="Configuracion ATM">
+                <group>
+                    <field name="journal_ATM_id"></field>
+                    <field name="partner_ATM_id"></field>
+                </group>
+            </page>
+        </xpath>
+    </field>
+</record>
+
+</odoo>
