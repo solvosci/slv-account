@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_move_form_autocomplete_button_purchase_inherit" model="ir.ui.view">
+        <field name="name">account.move.form (Union Autocomplete)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="purchase.view_move_form_inherit_purchase" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_vendor_bill_id']" position="attributes">
+                <attribute name="domain">partner_id and [('company_id', '=', company_id), ('partner_id.commercial_partner_id', '=', commercial_partner_id), ('purchase_order_id', '!=', False)] or [('company_id', '=', company_id), ('purchase_order_id', '!=', False)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
