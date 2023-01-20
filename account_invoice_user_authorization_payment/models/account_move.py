@@ -14,4 +14,4 @@ class AccountMove(models.Model):
     def _compute_user_authorization_payment(self):
         for move in self:
             if move.payment_state == 'paid':
-                move.user_authorization_payment = move.user_id
+                move.user_authorization_payment = self.env.user
