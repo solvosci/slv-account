@@ -14,6 +14,8 @@
         "account"
     ],
     "data": [
+        "security/account_security.xml",
+        "security/ir.model.access.csv",
         "views/account_move_views.xml"
     ],
     'installable': True,
