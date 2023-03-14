@@ -3,7 +3,7 @@
 {
     "name": "Account Invoice Grouped by Picking - extended to Purchase",
     "summary": "Print invoice lines grouped by picking, including purchase invoices",
-    "version": "13.0.1.0.0",
+    "version": "13.0.1.0.1",
     "category": "Accounting & Finance",
     "website": "https://github.com/solvosci/slv-account",
     "author": "Solvos",
