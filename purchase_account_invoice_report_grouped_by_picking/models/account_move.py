@@ -49,17 +49,19 @@ class AccountMove(models.Model):
         sign *= document_data[inv_type]["sign"]
         # Let's get first a correspondance between pickings and sales order
         doc_dict = {x[document_data[inv_type]["document_id"]]: x for x in self.picking_ids if x[document_data[inv_type]["document_id"]]}
+        # Compatibility with solvosci/slv-account/account_invoice_report_gbp_dmm
+        #  without need of addons strict dependency
+        selfctx = self.with_context(
+            signed_quantity_done_endloc=document_data[inv_type]["location_usages"],
+            signed_quantity_done_qtyfield="quantity_done" if inv_type == "in" else False,
+        )
         # Now group by picking by direct link or via same SO as picking's one
-        for line in self.invoice_line_ids:
+        for line in self.invoice_line_ids.filtered(lambda x: not x.display_type):
             remaining_qty = line.quantity
             for move in line.move_line_ids:
                 key = (move.picking_id, line)
                 picking_dict.setdefault(key, 0)
-                qty = 0
-                if move.location_id.usage in document_data[inv_type]["location_usages"]:
-                    qty = -move.quantity_done * sign
-                elif move.location_dest_id.usage in document_data[inv_type]["location_usages"]:
-                    qty = move.quantity_done * sign
+                qty = selfctx._get_signed_quantity_done(line, move, sign)
                 picking_dict[key] += qty
                 remaining_qty -= qty
             if not line.move_line_ids and line[document_data[inv_type]["line_ids"]]:
