@@ -45,7 +45,18 @@ class AccountMove(models.Model):
 
         inv_type = "in" if self.type in ("in_invoice", "in_refund", "in_receipt") else "out"        
 
-        sign = -1.0 if self.type == document_data[inv_type]["type_refund"] else 1.0
+        # Not change sign if the credit note has been created from reverse move option
+        # and it has the same pickings related than the reversed invoice instead of sale
+        # order invoicing process after picking reverse transfer
+        sign = (
+            -1.0
+            if self.type == document_data[inv_type]["type_refund"]
+            and (
+                not self.reversed_entry_id
+                or self.reversed_entry_id.picking_ids != self.picking_ids
+            )
+            else 1.0
+        )
         sign *= document_data[inv_type]["sign"]
         # Let's get first a correspondance between pickings and sales order
         doc_dict = {x[document_data[inv_type]["document_id"]]: x for x in self.picking_ids if x[document_data[inv_type]["document_id"]]}
