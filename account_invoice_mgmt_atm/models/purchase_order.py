@@ -18,7 +18,7 @@ class PurchaseOrder(models.Model):
             record.invoice_count = len(record.invoice_ids.filtered(lambda x: x.state == 'posted' and x.atm_invoice))
 
     def create_atm_account_move(self):
-        result = super(PurchaseOrder, self).action_view_invoice()
+        result = self.action_view_invoice()
         result["context"]["default_atm_invoice"] = True
         if self.amount_total < 1000:
             result["context"]["default_invoice_cash_rounding_id"] = self.env.ref('account_invoice_mgmt_atm.account_cash_rounding_default').id
