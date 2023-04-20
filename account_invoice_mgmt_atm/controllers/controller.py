@@ -57,7 +57,7 @@ class AddonCajeroHttp(http.Controller):
     @http.route('/cajero/EmisionCompletadaReciclaje', type='http', auth='api_key', methods=['GET', 'POST'], csrf=False)
     def cajero_emision_completada_reciclaje(self, *args, **post):
         try:
-            res_company_id = request.env["res.company"].search([])
+            res_company_id = request.env["res.users"].browse(request.uid).company_id
             ws_user = res_company_id.partner_ATM_id
             json_data = request.httprequest.data
             json_data = json.loads(json_data.decode('utf-8'))
