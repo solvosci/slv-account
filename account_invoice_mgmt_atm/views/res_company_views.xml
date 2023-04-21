@@ -10,7 +10,6 @@
             <page name="ATM_config" string="Configuracion ATM">
                 <group>
                     <field name="journal_ATM_id"></field>
-                    <field name="partner_ATM_id"></field>
                 </group>
             </page>
         </xpath>

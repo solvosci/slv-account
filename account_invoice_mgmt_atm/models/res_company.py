@@ -8,4 +8,3 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
     journal_ATM_id = fields.Many2one('account.journal', string='ATM journal')
-    partner_ATM_id = fields.Many2one('res.partner', string='ATM contact')
