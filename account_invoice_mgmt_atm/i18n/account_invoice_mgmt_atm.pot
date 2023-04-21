@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_mgmt_atm
-#: model:ir.model.fields,field_description:account_invoice_mgmt_atm.field_res_company__partner_ATM_id
-msgid "ATM contact"
-msgstr ""
-
-#. module: account_invoice_mgmt_atm
 #: model:ir.model.fields,field_description:account_invoice_mgmt_atm.field_res_company__journal_ATM_id
 msgid "ATM journal"
 msgstr ""
