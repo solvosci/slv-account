@@ -48,7 +48,7 @@ class AddonCajeroHttp(http.Controller):
         json_result = {
             'retAceptado': ret_success,
             'retCodigo': ret_code,
-            'retImporte': int(price_subtotal),
+            'retImporte': round(price_subtotal),
             'retImporteEfectivo': 0,
             'retImporteCheque': 0
         }
