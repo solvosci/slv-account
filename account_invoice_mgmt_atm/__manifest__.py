@@ -21,6 +21,7 @@
         "reports/account_move_report.xml",
         "security/ir.model.access.csv",
         "views/account_move_view.xml",
+        "views/account_payment_views.xml",
         "views/purchase_order_view.xml",
         "views/res_company_views.xml",
     ],
