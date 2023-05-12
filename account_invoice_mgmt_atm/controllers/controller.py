@@ -15,6 +15,7 @@ class AddonCajeroHttp(http.Controller):
         json_data = request.httprequest.data
         ret_code = 0
         price_subtotal = 0
+        ret_name = ''
         ret_success = True
         json_data = json.loads(json_data.decode('utf-8'))
         invoice_id = request.env["account.move"].sudo().search([('encrypted_name_lower', '=', json_data["parCodigo"])])
@@ -43,6 +44,7 @@ class AddonCajeroHttp(http.Controller):
             ret_code = 5
             ret_success = False
         else:
+            ret_name = invoice_id.partner_id.name
             price_subtotal = invoice_id.amount_residual * 100
 
         json_result = {
@@ -50,7 +52,8 @@ class AddonCajeroHttp(http.Controller):
             'retCodigo': ret_code,
             'retImporte': round(price_subtotal),
             'retImporteEfectivo': 0,
-            'retImporteCheque': 0
+            'retImporteCheque': 0,
+            'retNombre': ret_name
         }
         return str(json_result)
 
@@ -82,11 +85,11 @@ class AddonCajeroHttp(http.Controller):
             vals = {}
 
             if not request.env["account.payment"].sudo().search([('payment_ATM_id', '=', payment_ATM_id)]):
-                check_number = {"payment_reference" : check_number}
                 typeofMove = "outbound"
                 vals.update({"partner_type": "supplier"})
                 payment_method_id = res_company_id.sudo().journal_ATM_id.outbound_payment_method_ids[0]
                 vals.update({
+                    "atm_check": check_number,
                     "payment_type": typeofMove, #outbound
                     "payment_method_id": payment_method_id.id,
                     "amount": amount, #cantidad
