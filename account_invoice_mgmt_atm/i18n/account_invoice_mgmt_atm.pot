@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 09:45+0000\n"
-"PO-Revision-Date: 2023-03-16 09:45+0000\n"
+"POT-Creation-Date: 2023-05-12 07:10+0000\n"
+"PO-Revision-Date: 2023-05-12 07:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgid "Account Rounding 10 cents"
 msgstr ""
 
 #. module: account_invoice_mgmt_atm
+#: model:ir.model.fields,field_description:account_invoice_mgmt_atm.field_account_payment__atm_check
+msgid "Atm Check"
+msgstr ""
+
+#. module: account_invoice_mgmt_atm
 #: model:ir.model.fields,field_description:account_invoice_mgmt_atm.field_account_move__atm_invoice
 msgid "Atm Invoice"
 msgstr ""
@@ -38,6 +43,13 @@ msgstr ""
 #. module: account_invoice_mgmt_atm
 #: model:ir.model.fields,field_description:account_invoice_mgmt_atm.field_purchase_order__invoice_count
 msgid "Bill Count"
+msgstr ""
+
+#. module: account_invoice_mgmt_atm
+#: code:addons/account_invoice_mgmt_atm/models/purchase_order.py:0
+#, python-format
+msgid ""
+"Cannot create an invoice for cashier if the amount is greater than 3000"
 msgstr ""
 
 #. module: account_invoice_mgmt_atm
