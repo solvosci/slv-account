@@ -8,6 +8,7 @@ class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
     payment_ATM_id = fields.Char()
+    atm_check = fields.Char()
 
     _sql_constraints = [(
         'payment_ATM_id_unique',
