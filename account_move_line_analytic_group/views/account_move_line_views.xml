@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_view_form_clun_back_data" model="ir.ui.view">
+        <field name="name">account.move.line.search (Account Move Line Filter)</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='account_id']" position="after">
+                <field name="analytic_account_group_id" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+            <xpath expr="//search/field[@name='analytic_account_group_id']" position="after">
+                <field name="analytic_account_group_root_id" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+            <xpath expr="//group/filter[@name='journal']" position="after">
+                <filter name="analytic_account_group_id" domain="[]" context="{'group_by': 'analytic_account_group_id'}" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+            <xpath expr="//group/filter[@name='analytic_account_group_id']" position="after">
+                <filter name="analytic_account_group_root_id" domain="[]" context="{'group_by': 'analytic_account_group_root_id'}" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
