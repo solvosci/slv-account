@@ -1,0 +1,53 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_line_analytic_group
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-05 15:18+0000\n"
+"PO-Revision-Date: 2023-10-05 17:21+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model.fields,field_description:account_move_line_analytic_group.field_account_move_line__analytic_account_group_id
+msgid "Analytic Account Group"
+msgstr "Grupo cuenta analítica"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model.fields,field_description:account_move_line_analytic_group.field_account_move_line__analytic_account_group_root_id
+msgid "Analytic Account Root Group"
+msgstr "Grupo cuenta analítica raiz"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model,name:account_move_line_analytic_group.model_account_analytic_group
+msgid "Analytic Categories"
+msgstr "Categoría Analítica"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model.fields,help:account_move_line_analytic_group.field_account_analytic_group__root_id
+#: model:ir.model.fields,help:account_move_line_analytic_group.field_account_move_line__analytic_account_group_root_id
+msgid ""
+"Indicates the root category for this category, or the category itself if has "
+"no parents"
+msgstr ""
+"Indica la carpeta raíz de esta categoría, o la propia categoría si no tiene "
+"padres"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model,name:account_move_line_analytic_group.model_account_move_line
+msgid "Journal Item"
+msgstr "Elemento de diario"
+
+#. module: account_move_line_analytic_group
+#: model:ir.model.fields,field_description:account_move_line_analytic_group.field_account_analytic_group__root_id
+msgid "Root Category"
+msgstr "Categoría raiz"
