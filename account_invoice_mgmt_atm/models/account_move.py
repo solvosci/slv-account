@@ -16,4 +16,4 @@ class AccountMove(models.Model):
     def _compute_encrypted_name(self):
         for record in self:
             record.encrypted_name = hashlib.sha1(record.name.encode()).hexdigest()
-            record.encrypted_name_lower = record.encrypted_name[0:20]
+            record.encrypted_name_lower = '%s %s' % (record.name, record.encrypted_name[0:8])
