@@ -9,7 +9,7 @@
                 <field name="quantity" position="after">
                     <field
                         name="purchase_qty_to_reinvoice"
-                        attrs="{'column_invisible': [('parent.move_type', '!=', 'in_refund')]}"
+                        attrs="{'column_invisible': [('parent.type', '!=', 'in_refund')]}"
                         optional="show"
                     />
                 </field>
