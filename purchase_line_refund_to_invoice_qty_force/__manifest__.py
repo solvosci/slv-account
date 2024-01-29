@@ -7,7 +7,7 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Purchases",
     "website": "https://github.com/solvosci/slv-account",
     "depends": ["purchase_line_refund_to_invoice_qty"],
