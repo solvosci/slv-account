@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_due_list_commercial_effect_account_group
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-29 09:24+0000\n"
+"PO-Revision-Date: 2024-01-29 09:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_due_list_commercial_effect_account_group
+#: model:ir.model,name:account_due_list_commercial_effect_account_group.model_account_group
+msgid "Account Group"
+msgstr ""
+
+#. module: account_due_list_commercial_effect_account_group
+#: model:ir.model.fields,field_description:account_due_list_commercial_effect_account_group.field_account_group__commercial_effect
+#: model:ir.model.fields,field_description:account_due_list_commercial_effect_account_group.field_account_move_line__commercial_effect
+#: model_terms:ir.ui.view,arch_db:account_due_list_commercial_effect_account_group.view_payments_filter
+msgid "Commercial Effect"
+msgstr ""
+
+#. module: account_due_list_commercial_effect_account_group
+#: model:ir.model,name:account_due_list_commercial_effect_account_group.model_account_move_line
+msgid "Journal Item"
+msgstr ""
