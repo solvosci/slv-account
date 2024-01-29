@@ -26,7 +26,7 @@ class PurchaseOrderLine(models.Model):
             for invoice_line in line.invoice_lines:
                 if (
                     invoice_line.move_id.state != "cancel"
-                    and invoice_line.move_id.move_type == "in_refund"
+                    and invoice_line.move_id.type == "in_refund"
                     and not invoice_line.purchase_qty_to_reinvoice
                 ):
                     qty_invoiced += invoice_line.product_uom_id._compute_quantity(
@@ -56,7 +56,7 @@ class PurchaseOrderLine(models.Model):
             for invoice_line in line.invoice_lines:
                 if (
                     invoice_line.move_id.state != "cancel"
-                    and invoice_line.move_id.move_type == "in_refund"
+                    and invoice_line.move_id.type == "in_refund"
                     and not invoice_line.purchase_qty_to_reinvoice
                 ):
                     qty_ref_not_inv += invoice_line.product_uom_id._compute_quantity(
