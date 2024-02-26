@@ -2,7 +2,10 @@
 # License LGPL-3 - See http://www.gnu.org/licenses/lgpl-3.0.html
 
 from odoo import models, fields, _
-import os
+import base64
+import pytesseract
+from pdf2image import convert_from_path
+import tempfile
 
 
 class AccountMoveDmsFileWizard(models.TransientModel):
@@ -43,12 +46,14 @@ class AccountMoveDmsFileWizard(models.TransientModel):
             'account_move_id': self.account_move_id.id
         })
 
-        # parent_folder = (_("/Reports/Purchase Invoices/"))
-        # try:
-        #     os.makedirs(parent_folder)
-        # except OSError:
-        #     # In the case that the folders already exist
-        #     pass
-        # path_invoice = '%s%s' % (parent_folder, dms_file_name)
-        # with open(path_invoice, "wb") as fh:
-        #     fh.write(dms_file_id.content)
+        pdf_data = base64.b64decode(self.dms_file)
+
+        with tempfile.NamedTemporaryFile(suffix='.pdf', delete=True) as temp_pdf:
+            temp_pdf.write(pdf_data)
+            temp_pdf.flush()
+            images = convert_from_path(temp_pdf.name)
+
+            dms_file_id.ocr_doc = ''
+            for i, image in enumerate(images):
+                text = pytesseract.image_to_string(image, lang='spa', config='--psm 6')
+                dms_file_id.ocr_doc += _('Page %s: %s <br/><br/>') % (i+1, text)

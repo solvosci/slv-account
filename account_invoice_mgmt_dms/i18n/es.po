@@ -25,7 +25,6 @@ msgstr "/Informes/Procesadas/"
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
-#: code:addons/account_invoice_mgmt_dms/wizards/account_move_dms_file_wizard.py:0
 #, python-format
 msgid "/Reports/Purchase Invoices/"
 msgstr "/Informes/Facturas de compra/"
@@ -397,6 +396,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__note
 msgid "Note"
 msgstr "Observaciones"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/wizards/account_move_dms_file_wizard.py:0
+#, python-format
+msgid "Page %s: %s <br/><br/>"
+msgstr "Página %s: %s <br/><br/>"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__account_move__state_complete_proceesing__pending

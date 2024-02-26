@@ -23,7 +23,6 @@ msgstr ""
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
-#: code:addons/account_invoice_mgmt_dms/wizards/account_move_dms_file_wizard.py:0
 #, python-format
 msgid "/Reports/Purchase Invoices/"
 msgstr ""
@@ -395,6 +394,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__note_complete_proceesing
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_dms_file__note
 msgid "Note"
+msgstr ""
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/wizards/account_move_dms_file_wizard.py:0
+#, python-format
+msgid "Page %s: %s <br/><br/>"
 msgstr ""
 
 #. module: account_invoice_mgmt_dms
