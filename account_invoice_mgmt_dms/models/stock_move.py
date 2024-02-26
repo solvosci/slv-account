@@ -48,5 +48,4 @@ class StockMove(models.Model):
             action['view_mode'] = 'form'
             action['view_type'] = 'form'
             action['res_id'] = dms_file_ids.id
-
         return action
