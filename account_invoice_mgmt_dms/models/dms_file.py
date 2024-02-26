@@ -54,29 +54,3 @@ class DmsFile(models.Model):
             'target': 'new',
             'type': 'ir.actions.act_window',
         }
-
-    def cron_scan_and_save_ocr(self):
-        parent_folder = (_("/Reports/Processed/"))
-        files = os.listdir(parent_folder)
-        for file in files:
-            if file[-4:] == '.txt':
-                path_file_txt = '%s%s' % (parent_folder, file)
-                with open(path_file_txt, encoding="utf8") as f:
-                    lines = f.readlines()
-                    ocr_doc = ""
-                    for line in lines:
-                        ocr_doc += "<p>%s</p>" % line
-
-                name = '%s.%s' % (file[:-4], 'pdf')
-                dms_file_id = self.search([('name', '=', name)])
-                dms_file_id.ocr_doc = ocr_doc
-                processed_folder = ("%s%s" % (parent_folder, _("Processed/")))
-                try:
-                    os.makedirs(processed_folder)
-                except OSError:
-                    # In the case that the folders already exist
-                    pass
-                os.replace(path_file_txt, "%s%s" % (processed_folder, file))
-                if name in files:
-                    path_file_pdf = "%s%s" % (parent_folder, name)
-                    os.replace(path_file_pdf, "%s%s" % (processed_folder, name))
