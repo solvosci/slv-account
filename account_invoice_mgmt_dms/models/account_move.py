@@ -2,6 +2,7 @@
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0.html)
 
 from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 import base64
 import io
 
@@ -136,3 +137,10 @@ class AccountMove(models.Model):
             'state_account_move': 'pending',
             'complete_proceeding': True,
         })
+
+    def action_invoice_register_payment(self):
+        if self.state_complete_proceesing in ['pending', 'declined']:
+            raise ValidationError(
+                    _("Must be approved before making payment")
+                )
+        return super(AccountMove, self).action_invoice_register_payment()
