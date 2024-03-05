@@ -101,27 +101,25 @@ class AccountMove(models.Model):
         for purchase_order_id in self.invoice_line_ids.purchase_line_id.order_id:
             ticket_id = self.env["stock.picking.classification"].sudo().search([("picking_id.classification_purchase_order_id", "=", purchase_order_id.id)]).picking_id.move_ids_without_package
 
-            # purchase_pdf = io.BytesIO(self.env.ref("purchase.action_report_purchase_order").render_qweb_pdf(purchase_order_id.id)[0])
             purchase_vp_pdf = io.BytesIO(self.env.ref("reports_alu.action_report_purchase_order_alumisel_vp").render_qweb_pdf(purchase_order_id.id)[0])
-            ticket_pdf = io.BytesIO(self.env.ref("stock_picking_mgmt_weight.action_report_move_tag").render_qweb_pdf(ticket_id.id)[0])
-            # streams.append(purchase_pdf)
             streams.append(purchase_vp_pdf)
-            streams.append(ticket_pdf)
 
-            dms_file_carrier_ids = self.env['dms.file'].sudo().search([('proceeding', '=', ticket_id.picking_id.name), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_carrier_doc').id)])
+            if ticket_id:
+                proceeding = ticket_id.picking_id.name
+                ticket_pdf = io.BytesIO(self.env.ref("stock_picking_mgmt_weight.action_report_move_tag").render_qweb_pdf(ticket_id.id)[0])
+                streams.append(ticket_pdf)
+
+            dms_file_carrier_ids = self.env['dms.file'].sudo().search([('proceeding', '=', proceeding), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_carrier_doc').id)])
             if dms_file_carrier_ids:
                 for doc_carrier in dms_file_carrier_ids:
                     streams.append(io.BytesIO(doc_carrier.content_binary))
 
-            dms_extra_ids = self.env['dms.file'].sudo().search([('proceeding', '=', ticket_id.picking_id.name), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_extra_doc').id)])
-            if dms_extra_ids:
-                for doc_extra in dms_extra_ids:
-                    streams.append(io.BytesIO(doc_extra.content_binary))
-
-            if not proceeding == '':
-                proceeding = '%s, %s' % (proceeding, ticket_id.picking_id.name)
-            else:
-                proceeding = ticket_id.picking_id.name
+        if not proceeding:
+            proceeding = self.name
+        dms_extra_ids = self.env['dms.file'].sudo().search([('proceeding', '=', proceeding), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_extra_doc').id)])
+        if dms_extra_ids:
+            for doc_extra in dms_extra_ids:
+                streams.append(io.BytesIO(doc_extra.content_binary))
 
         if self.complete_proceesing_id:
             self.complete_proceesing_id.unlink()
