@@ -1,2 +1,2 @@
-pytesseract
+pytesseract==0.3.0
 pdf2image
