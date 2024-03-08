@@ -14,6 +14,7 @@ class AccountMove(models.Model):
     dms_file_ids = fields.One2many('dms.file', 'account_move_id', readonly=True)
     dms_file_count = fields.Integer(compute='_compute_dms_file_count')
 
+    purchase_invoice_proceesing_id = fields.Many2one('dms.file', compute='_compute_complete_proceesing_id', store=True, readonly=True)
     complete_proceesing_id = fields.Many2one('dms.file', compute='_compute_complete_proceesing_id', store=True, readonly=True)
     state_complete_proceesing = fields.Selection([
         ('pending', 'Pending'),
@@ -45,9 +46,14 @@ class AccountMove(models.Model):
 
     @api.depends('dms_file_ids')
     def _compute_complete_proceesing_id(self):
+        directory_id = self.env.ref('account_invoice_mgmt_dms.dms_directory_puchase_invoice')
         for record in self:
             if record.dms_file_ids.filtered(lambda x: x.complete_proceeding):
                 record.complete_proceesing_id = record.dms_file_ids.filtered(lambda x: x.complete_proceeding)
+
+            purchase_invoice_file = record.dms_file_ids.filtered(lambda x: x.directory_id == directory_id)
+            if purchase_invoice_file:
+                record.purchase_invoice_proceesing_id = purchase_invoice_file
 
     def action_dms_files(self):
         ticket_name = self.name
@@ -142,3 +148,23 @@ class AccountMove(models.Model):
                     _("Must be approved before making payment")
                 )
         return super(AccountMove, self).action_invoice_register_payment()
+
+    def action_approve_complete_processing(self):
+        invoice_ids = self.env["account.move"].browse(self._context.get("active_ids", []))
+        for record in invoice_ids.filtered(lambda x: x.complete_proceesing_id and x.complete_proceesing_id.state_account_move == 'pending'):
+            record.complete_proceesing_id.approve_account_move()
+
+    def action_download_purchase_invoice(self):
+        invoice_ids = self.env['account.move'].browse(self._context.get("active_ids", [])).filtered(lambda x: x.purchase_invoice_proceesing_id)
+        invoice_ids = [str(id) for id in invoice_ids.ids]
+        if invoice_ids:
+            url = '/account_invoice_mgmt_dms/download_purchase_invoice?ids=%s' % ','.join(invoice_ids)
+            return {
+                'type': 'ir.actions.act_url',
+                'url': url,
+                'target': 'new',
+            }
+        else:
+           raise ValidationError(
+                    _("No selected invoice has the supplier invoice stored")
+                )
