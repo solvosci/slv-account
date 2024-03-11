@@ -7,7 +7,7 @@ from odoo import models, fields, api
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    payment_ids = fields.Many2many('account.payment', 'account_invoice_payment_rel', 'invoice_id' , 'payment_id')
+    payment_ids = fields.Many2many('account.payment', 'account_invoice_payment_rel', 'invoice_id' , 'payment_id', copy=False)
     promissory_note_number = fields.Char(compute='_compute_promissory_note_number', store=True)
     payment_date = fields.Date(compute='_compute_payment_date', store=True)
 
