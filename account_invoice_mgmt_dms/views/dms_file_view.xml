@@ -21,6 +21,7 @@
                     class="btn-primary"
                     attrs="{'invisible': [('state_account_move', '!=', 'pending')]}"
                     type="object"
+                    groups="account_invoice_mgmt_dms.group_invoice_approver"
                 />
                 <button 
                     name="decline_account_move"
@@ -28,6 +29,7 @@
                     class="btn-primary"
                     attrs="{'invisible': [('state_account_move', '!=', 'pending')]}"
                     type="object"
+                    groups="account_invoice_mgmt_dms.group_invoice_approver"
                 />
             </xpath>
             <xpath expr="//page[@name='page_access']" position="after">

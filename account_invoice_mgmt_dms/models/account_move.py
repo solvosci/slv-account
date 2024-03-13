@@ -150,6 +150,9 @@ class AccountMove(models.Model):
         return super(AccountMove, self).action_invoice_register_payment()
 
     def action_approve_complete_processing(self):
+        if not self.env.user.has_group("account_invoice_mgmt_dms.group_invoice_approver"):
+            raise ValidationError(_("You don't have permission to approve invoices."))
+
         invoice_ids = self.env["account.move"].browse(self._context.get("active_ids", []))
         for record in invoice_ids.filtered(lambda x: x.complete_proceesing_id and x.complete_proceesing_id.state_account_move == 'pending'):
             record.complete_proceesing_id.approve_account_move()
