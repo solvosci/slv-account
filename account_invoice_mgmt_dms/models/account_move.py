@@ -122,7 +122,7 @@ class AccountMove(models.Model):
 
         if not proceeding:
             proceeding = self.name
-        dms_extra_ids = self.env['dms.file'].sudo().search([('proceeding', '=', proceeding), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_extra_doc').id)])
+        dms_extra_ids = self.env['dms.file'].sudo().search([('proceeding', 'ilike', proceeding), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_extra_doc').id)])
         if dms_extra_ids:
             for doc_extra in dms_extra_ids:
                 streams.append(io.BytesIO(doc_extra.content_binary))
