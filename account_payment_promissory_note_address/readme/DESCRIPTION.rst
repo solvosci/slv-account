@@ -1,1 +1,1 @@
-Allows to incluir payment partner address to promissory note.
+Allows to add payment partner address to promissory note.

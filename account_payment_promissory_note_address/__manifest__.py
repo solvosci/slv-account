@@ -3,7 +3,7 @@
 {
     "name": "Account Payment Promissory Note Partner Address",
     "summary": """
-        Allows to incluir payment partner address to promissory note."
+        Allows to add payment partner address to promissory note."
     """,
     "author": "Solvos",
     "license": "AGPL-3",
