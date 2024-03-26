@@ -6,16 +6,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-13 11:14+0000\n"
-"PO-Revision-Date: 2024-03-13 12:39+0100\n"
+"POT-Creation-Date: 2024-03-26 15:25+0000\n"
+"PO-Revision-Date: 2024-03-26 15:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#, python-format
+msgid "/Reports/Processed/"
+msgstr "/Informes/Procesadas/"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#, python-format
+msgid "/Reports/Purchase Invoices/"
+msgstr "/Informes/Facturas de compra/"
 
 #. module: account_invoice_mgmt_dms
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_weight_dms_form_inherit
@@ -34,6 +44,7 @@ msgstr "Factura"
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
 #, python-format
 msgid "Add Extra Docs"
 msgstr "Adjuntar documentos adicionales"
@@ -45,6 +56,7 @@ msgid "Add Extra Documents"
 msgstr "Adjuntar documentos adicionales"
 
 #. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
 #: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_file_wizard
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
@@ -87,7 +99,8 @@ msgstr "Documento"
 #: code:addons/account_invoice_mgmt_dms/models/account_payment_order.py:0
 #, python-format
 msgid "Before making payment, the following invoices must be approved: %s"
-msgstr "Antes de efectuar el pago, deben aprobarse las siguientes facturas: %s"
+msgstr ""
+"Antes de efectuar el pago, deben aprobarse las siguientes facturas: %s"
 
 #. module: account_invoice_mgmt_dms
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_dms_extra_file_wizard
@@ -96,6 +109,16 @@ msgstr "Antes de efectuar el pago, deben aprobarse las siguientes facturas: %s"
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_stock_move_dms_file_wizard
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_directory.py:0
+#, python-format
+msgid ""
+"Cannot delete the following directories as required for invoice DMS management:\n"
+"- %s"
+msgstr ""
+"No se pueden borrar los siguientes directorios, por ser necesarios para la Gestión Documental de facturas:\n"
+"- %s"
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/models/stock_move.py:0
@@ -136,6 +159,7 @@ msgstr "Creado en"
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
+#: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
 #, python-format
 msgid "DMS File"
@@ -145,6 +169,18 @@ msgstr "Documentos"
 #: model:ir.actions.act_window,name:account_invoice_mgmt_dms.view_stock_move_dms_form
 msgid "DMS files"
 msgstr "Documentos"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#, python-format
+msgid "Date End"
+msgstr "Fecha Hasta"
+
+#. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/controllers/clasification_purchase_order.py:0
+#, python-format
+msgid "Date Start"
+msgstr "Fecha Desde"
 
 #. module: account_invoice_mgmt_dms
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_dms_file_decline_account_move_wizard
@@ -262,12 +298,12 @@ msgstr "Información documental"
 #. module: account_invoice_mgmt_dms
 #: model:ir.model,name:account_invoice_mgmt_dms.model_account_move
 msgid "Journal Entries"
-msgstr "Apuntes contables"
+msgstr "Asientos contables"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model,name:account_invoice_mgmt_dms.model_account_move_line
 msgid "Journal Item"
-msgstr "Elemento de tarifa"
+msgstr "Apunte contable"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_dms_extra_file_wizard____last_update
@@ -325,7 +361,8 @@ msgstr "Debe aprobarse la factura antes de efectuar el pago"
 #: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
 #, python-format
 msgid "No selected invoice has the supplier invoice stored"
-msgstr "Ningún registro seleccionado tiene almacenada una Factura del proveedor"
+msgstr ""
+"Ningún registro seleccionado tiene almacenada una Factura del proveedor"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model.fields.selection,name:account_invoice_mgmt_dms.selection__dms_file__rating__1
@@ -382,6 +419,12 @@ msgid "Proceeding"
 msgstr "Expediente"
 
 #. module: account_invoice_mgmt_dms
+#: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
+#, python-format
+msgid "Processed/"
+msgstr "Procesadas/"
+
+#. module: account_invoice_mgmt_dms
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__purchase_invoice_proceesing_id
 msgid "Purchase Invoice Proceesing"
 msgstr "Factura de compras"
@@ -389,7 +432,7 @@ msgstr "Factura de compras"
 #. module: account_invoice_mgmt_dms
 #: model:ir.model,name:account_invoice_mgmt_dms.model_purchase_order
 msgid "Purchase Order"
-msgstr "Orden de Compra"
+msgstr "Pedido de compra"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__rating_complete_proceesing
@@ -418,7 +461,7 @@ msgstr "Estado DOC"
 #: model:ir.model,name:account_invoice_mgmt_dms.model_stock_move
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__stock_move_id
 msgid "Stock Move"
-msgstr "Movimiento de Inventario"
+msgstr "Movimiento de existencias"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_stock_move_dms_file_wizard__ticket_name
