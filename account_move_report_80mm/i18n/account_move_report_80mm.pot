@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_report_80mm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-17 11:08+0000\n"
+"PO-Revision-Date: 2025-03-17 11:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_move_report_80mm
+#: model:ir.actions.report,name:account_move_report_80mm.action_account_move_pdf
+msgid "Account Move Ticket"
+msgstr ""
+
+#. module: account_move_report_80mm
+#: model:ir.model,name:account_move_report_80mm.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: account_move_report_80mm
+#: model_terms:ir.ui.view,arch_db:account_move_report_80mm.view_move_form
+msgid "Print Ticket 80mm"
+msgstr ""
