@@ -1,0 +1,9 @@
+<odoo>
+    <template id="report_invoice_document" inherit_id="account_invoice_report_grouped_by_picking.report_invoice_document">
+        <xpath expr="//t[contains(@t-set, 'lines_grouped')]" position="after">
+            <t t-set="lines_grouped" t-value="[
+                lg for lg in o.lines_grouped_by_picking() if lg['line'].display_type not in ('line_section', 'line_note')
+            ]" />
+        </xpath>
+    </template>
+</odoo>
