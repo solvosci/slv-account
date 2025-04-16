@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-25 11:16+0000\n"
-"PO-Revision-Date: 2025-03-25 11:16+0000\n"
+"POT-Creation-Date: 2025-04-16 07:29+0000\n"
+"PO-Revision-Date: 2025-04-16 07:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -261,6 +261,11 @@ msgid "Document Validator"
 msgstr "Validador de documentos"
 
 #. module: account_invoice_mgmt_dms
+#: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_journal_form
+msgid "Documental Management"
+msgstr "Gestión documental"
+
+#. module: account_invoice_mgmt_dms
 #: model:ir.actions.server,name:account_invoice_mgmt_dms.action_account_move_download_complete_proceesing
 msgid "Download Complete Proceesing"
 msgstr "Descargar expediente completo"
@@ -334,6 +339,11 @@ msgstr "Factura"
 #: model_terms:ir.ui.view,arch_db:account_invoice_mgmt_dms.view_account_move_form_inherit
 msgid "Invoice Info"
 msgstr "Información documental"
+
+#. module: account_invoice_mgmt_dms
+#: model:ir.model,name:account_invoice_mgmt_dms.model_account_journal
+msgid "Journal"
+msgstr "Diario"
 
 #. module: account_invoice_mgmt_dms
 #: model:ir.model,name:account_invoice_mgmt_dms.model_account_move
@@ -500,6 +510,12 @@ msgid "Skip Invoice Approval"
 msgstr "Saltar aprobación de factura"
 
 #. module: account_invoice_mgmt_dms
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_bank_statement_import_journal_creation__skip_invoice_publish_validator
+#: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_journal__skip_invoice_publish_validator
+msgid "Skip Invoice Publish Validator"
+msgstr "Saltar validador al publicar una factura"
+
+#. module: account_invoice_mgmt_dms
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move__state_complete_proceesing
 #: model:ir.model.fields,field_description:account_invoice_mgmt_dms.field_account_move_line__state_complete_proceesing
 msgid "State Complete Proceesing"
@@ -593,8 +609,11 @@ msgstr "No tiene permisos para validar alguna factura seleccionada."
 #: code:addons/account_invoice_mgmt_dms/models/dms_file.py:0
 #, python-format
 msgid ""
-"You don't have permission to validate this invoice (%s), only can validate the user: %s"
-msgstr "No tiene permisos para validar esta factura (%s), solo puede validarla el usuario: %s"
+"You don't have permission to validate this invoice (%s), only can validate "
+"the user: %s"
+msgstr ""
+"No tiene permisos para validar esta factura (%s), solo puede validarla el "
+"usuario: %s"
 
 #. module: account_invoice_mgmt_dms
 #: code:addons/account_invoice_mgmt_dms/models/account_move.py:0
