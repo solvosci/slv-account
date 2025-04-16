@@ -72,7 +72,7 @@ class AccountMove(models.Model):
                 record.purchase_invoice_proceesing_id = purchase_invoice_file
 
     def action_post(self):
-        for record in self.filtered(lambda x: x.type in ['in_invoice', 'in_refund', 'in_receipt']):
+        for record in self.filtered(lambda x: x.type in ['in_invoice', 'in_refund', 'in_receipt'] and not x.journal_id.skip_invoice_publish_validator):
             if record.partner_id.validator_complete_proceesing_id and not record.validator_complete_proceesing_id:
                 record.validator_complete_proceesing_id = record.partner_id.validator_complete_proceesing_id
             if not record.validator_complete_proceesing_id:
