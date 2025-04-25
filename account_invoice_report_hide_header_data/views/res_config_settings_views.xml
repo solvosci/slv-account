@@ -1,0 +1,23 @@
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">
+            res.config.settings.view.form.inherit.account (in account_invoice_report_hide_header_data)
+        </field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='analytic']" position="after">
+                <block title="Invoice report - presentation of header data" id="show_header_data">
+                    <setting id="show_source_invoice_reports" string="Source" help="Show the source column on the invoices reports">
+                        <field name="group_source_on_invoice_reports"/>
+                    </setting>
+                    <setting id="show_reference_invoice_reports" string="Reference" help="Show the reference column on the invoices reports">
+                        <field name="group_reference_on_invoice_reports"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
