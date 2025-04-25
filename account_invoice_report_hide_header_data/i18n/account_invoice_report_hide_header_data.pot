@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_report_hide_header_data
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-29 13:42+0000\n"
+"PO-Revision-Date: 2025-04-29 13:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_invoice_report_hide_header_data
+#: model:ir.model,name:account_invoice_report_hide_header_data.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model:res.groups,name:account_invoice_report_hide_header_data.group_reference_on_invoice_report
+msgid "Display Reference on Invoice Report"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model:res.groups,name:account_invoice_report_hide_header_data.group_source_on_invoice_report
+msgid "Display Source on Invoice Report"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_hide_header_data.res_config_settings_view_form
+msgid "Invoice report - presentation of header data"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model:ir.model.fields,field_description:account_invoice_report_hide_header_data.field_res_config_settings__group_reference_on_invoice_reports
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_hide_header_data.res_config_settings_view_form
+msgid "Reference"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_hide_header_data.res_config_settings_view_form
+msgid "Show the reference column on the invoices reports"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_hide_header_data.res_config_settings_view_form
+msgid "Show the source column on the invoices reports"
+msgstr ""
+
+#. module: account_invoice_report_hide_header_data
+#: model:ir.model.fields,field_description:account_invoice_report_hide_header_data.field_res_config_settings__group_source_on_invoice_reports
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_hide_header_data.res_config_settings_view_form
+msgid "Source"
+msgstr ""

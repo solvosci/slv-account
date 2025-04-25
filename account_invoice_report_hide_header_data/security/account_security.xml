@@ -1,0 +1,12 @@
+<odoo>
+
+    <record id="group_source_on_invoice_report" model="res.groups">
+        <field name="name">Display Source on Invoice Report</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="group_reference_on_invoice_report" model="res.groups">
+        <field name="name">Display Reference on Invoice Report</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+</odoo>
