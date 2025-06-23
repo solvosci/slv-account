@@ -7,7 +7,7 @@
     """,
     "author": "Solvos",
     "license": "AGPL-3",
-    "version": "13.0.1.2.0",
+    "version": "13.0.1.2.1",
     'category': "Account",
     "website": "https://github.com/solvosci/slv-account",
     "depends": [
