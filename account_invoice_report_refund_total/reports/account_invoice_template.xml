@@ -1,0 +1,25 @@
+<odoo>
+    <template id="document_tax_totals_template_total_refund" inherit_id="account.document_tax_totals_template">
+        <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
+                <attribute name="t-if">not o.reversed_entry_id</attribute>
+        </xpath>
+
+        <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
+            <t t-if="o.reversed_entry_id">
+                <strong style="color: red">Total Refund</strong>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="document_tax_totals_company_currency_template_refund" inherit_id="account.document_tax_totals_company_currency_template">
+        <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
+                <attribute name="t-if">not o.reversed_entry_id</attribute>
+        </xpath>
+
+        <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
+            <t t-if="o.reversed_entry_id">
+                <strong style="color: red">Total Refund</strong>
+            </t>
+        </xpath>
+    </template>
+</odoo>
