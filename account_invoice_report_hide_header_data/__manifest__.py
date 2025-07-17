@@ -5,11 +5,11 @@
     "summary": """
         Hide header data on invoices reports like:
         - source
-        - reference
+        - reference, this will be always shown if invoice is a refund
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     'category': "Accounting & Finance",
     "website": "https://github.com/solvosci/slv-account",
     "depends": ["account"],
