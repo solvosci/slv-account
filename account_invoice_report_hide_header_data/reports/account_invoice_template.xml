@@ -4,8 +4,9 @@
         <xpath expr="//div[@name='origin']" position="attributes">
             <attribute name="groups">account_invoice_report_hide_header_data.group_source_on_invoice_report</attribute>
         </xpath>
+
         <xpath expr="//div[@name='reference']" position="attributes">
-            <attribute name="groups">account_invoice_report_hide_header_data.group_reference_on_invoice_report</attribute>
+            <attribute name="t-if">o.reversed_entry_id or env.user.has_group('account_invoice_report_hide_header_data.group_reference_on_invoice_report')</attribute>
         </xpath>
     </template>
 
