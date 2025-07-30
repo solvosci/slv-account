@@ -1,23 +1,34 @@
 <odoo>
     <template id="document_tax_totals_template_total_refund" inherit_id="account.document_tax_totals_template">
+        <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="before">
+                <t t-set="total_doc" t-value="doc or o" />
+        </xpath>
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
-                <attribute name="t-if">not o.reversed_entry_id</attribute>
+            <attribute name="t-if">
+                total_doc._name != 'account.move' or (total_doc._name == 'account.move' and not total_doc.reversed_entry_id)
+            </attribute>
         </xpath>
 
+
         <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
-            <t t-if="o.reversed_entry_id">
+            <t t-if="total_doc._name == 'account.move' and total_doc.reversed_entry_id">
                 <strong style="color: red">Total Refund</strong>
             </t>
         </xpath>
     </template>
 
     <template id="document_tax_totals_company_currency_template_refund" inherit_id="account.document_tax_totals_company_currency_template">
+        <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="before">
+                <t t-set="total_doc" t-value="doc or o" />
+        </xpath>
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
-                <attribute name="t-if">not o.reversed_entry_id</attribute>
+                <attribute name="t-if">
+                    total_doc._name != 'account.move' or (total_doc._name == 'account.move' and not total_doc.reversed_entry_id)
+                </attribute>
         </xpath>
 
         <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
-            <t t-if="o.reversed_entry_id">
+            <t t-if="total_doc._name == 'account.move' and total_doc.reversed_entry_id">
                 <strong style="color: red">Total Refund</strong>
             </t>
         </xpath>
