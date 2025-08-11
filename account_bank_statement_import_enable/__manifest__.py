@@ -7,12 +7,12 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "13.0.1.0.0",
+    "version": "17.0.1.0.0",
     'category': "Account",
     "website": "https://github.com/solvosci/slv-account",
     "depends": ["account"],
     "data": [
-        "views/account_assets.xml",
+        "views/account_bank_statement_views.xml",
     ],
     'installable': True,
 }
