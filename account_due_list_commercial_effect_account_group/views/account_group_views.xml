@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record id="view_account_group_form" model="ir.ui.view">
@@ -6,7 +5,7 @@
         <field name="model">account.group</field>
         <field name="inherit_id" ref="account.view_account_group_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='parent_id']" position="after">
+            <xpath expr="//field[@name='company_id']" position="before">
                 <field name="commercial_effect" />
             </xpath>
         </field>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record id="account_due_list.action_invoice_payments" model="ir.actions.act_window">
