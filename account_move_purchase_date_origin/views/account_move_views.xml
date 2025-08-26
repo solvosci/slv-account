@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_invoice_tree" model="ir.ui.view">
+        <field name="name">account.invoice.tree (in account_move_purchase_date_origin)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <field name="invoice_origin" position="after">
+                <field
+                    name="purchase_date_origin"
+                    optional="show"
+                    string="Purchase Date"
+                    invisible="context.get('default_type') not in ('in_invoice', 'in_refund')"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.invoice.form (in account_move_purchase_date_origin)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field
+                    name="purchase_date_origin"
+                    string="Purchase Date"
+                    attrs="{'invisible': [('type', 'not in', ['in_invoice', 'in_refund'])]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_purchase_date_origin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-27 09:37+0000\n"
+"PO-Revision-Date: 2025-08-27 09:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_move_purchase_date_origin
+#: model:ir.model,name:account_move_purchase_date_origin.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: account_move_purchase_date_origin
+#: model_terms:ir.ui.view,arch_db:account_move_purchase_date_origin.view_invoice_tree
+#: model_terms:ir.ui.view,arch_db:account_move_purchase_date_origin.view_move_form
+msgid "Purchase Date"
+msgstr "Fecha de compra"
+
+#. module: account_move_purchase_date_origin
+#: model:ir.model.fields,field_description:account_move_purchase_date_origin.field_account_move__purchase_date_origin
+msgid "Purchase Date Origin"
+msgstr "Fecha de compra origen"
