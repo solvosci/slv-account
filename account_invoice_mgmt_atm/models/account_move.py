@@ -14,6 +14,31 @@ class AccountMove(models.Model):
 
     @api.depends('name')
     def _compute_encrypted_name(self):
-        for record in self:
+        for record in self.filtered(lambda x: x.name):
             record.encrypted_name = hashlib.sha1(record.name.encode()).hexdigest()
             record.encrypted_name_lower = '%s %s' % (record.name, record.encrypted_name[0:8])
+
+class AccountPaymentTerm(models.Model):
+    _inherit = "account.payment.term"
+
+    def _compute_terms(
+        self,
+        date_ref,
+        currency,
+        company,
+        tax_amount,
+        tax_amount_currency,
+        sign,
+        untaxed_amount,
+        untaxed_amount_currency,
+        cash_rounding=None,
+    ):
+        return super(AccountPaymentTerm, self)._compute_terms(date_ref,
+        currency,
+        company,
+        tax_amount,
+        tax_amount_currency,
+        sign,
+        untaxed_amount,
+        untaxed_amount_currency,
+        False)
