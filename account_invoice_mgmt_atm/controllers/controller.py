@@ -91,7 +91,7 @@ class AddonCajeroHttp(http.Controller):
                 if not user_id.journal_ATM_id:
                     _logger.warning(('User %s has no journal assigned') % (user_id.name))
                     return str({'retRegistro': False})
-                payment_method_id = user_id.sudo().journal_ATM_id.outbound_payment_method_ids[0]
+                payment_method_id = user_id.sudo().journal_ATM_id.outbound_payment_method_line_ids[0].payment_method_id
                 vals.update({
                     "atm_check": check_number,
                     "payment_type": typeofMove, #outbound
@@ -100,12 +100,20 @@ class AddonCajeroHttp(http.Controller):
                     "currency_id": res_company_id.currency_id.id, #outbound
                     "journal_id": user_id.journal_ATM_id.id, #Cash
                     "partner_id": account_invoice_id.partner_id.id, #Nicole
-                    "communication": ('CAJERO-%s') % account_invoice_id.name, #Da un poco igual
+                    "ref": ('CAJERO-%s') % account_invoice_id.name, #Da un poco igual
                     "payment_ATM_id": payment_ATM_id, # Codigo cajero
-                    "invoice_ids": [(4, account_invoice_id.id)] # Facturas relacionadas
                 })
                 account_payment_temp = request.env["account.payment"].sudo().create(vals)
-                account_payment_temp.post()
+                account_payment_temp.action_post()
+
+                invoice_lines = account_invoice_id.line_ids.filtered(
+                    lambda l: l.account_id.account_type in ("asset_receivable", "liability_payable")
+                )
+                payment_lines = account_payment_temp.line_ids.filtered(
+                    lambda l: l.account_id.account_type in ("asset_receivable", "liability_payable")
+                )
+                (invoice_lines + payment_lines).reconcile()
+
                 _logger.info(('ATM Payment successful: payment_id:%s invoice_id:%s quantity:%s') % (account_payment_temp.id, account_invoice_id.id, amount))
                 return str({'retRegistro': True})
             else:

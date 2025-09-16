@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
 
 <record id="res_company_temp_ATM_config" model="ir.ui.view">
@@ -9,7 +9,7 @@
         <xpath expr="//page" position="after">
             <page name="ATM_config" string="Configuracion ATM">
                 <group>
-                    <field name="journal_ATM_id"></field>
+                    <field name="journal_ATM_id" />
                 </group>
             </page>
         </xpath>
