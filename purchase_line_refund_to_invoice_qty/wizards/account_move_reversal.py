@@ -13,8 +13,8 @@ class AccountMoveReversal(models.TransientModel):
         "(standard behaviour)",
     )
 
-    def reverse_moves(self):
+    def reverse_moves(self, is_modify=False):
         return super(
             AccountMoveReversal,
             self.with_context(purchase_qty_to_reinvoice=self.purchase_qty_to_reinvoice),
-        ).reverse_moves()
+        ).reverse_moves(is_modify)
