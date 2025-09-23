@@ -6,6 +6,27 @@ from odoo import models
 class AccountPaymentTerm(models.Model):
     _inherit = "account.payment.term"
 
-    def compute(self, value, date_ref=False, currency=None):
+    def _compute_terms(
+        self,
+        date_ref,
+        currency,
+        company,
+        tax_amount,
+        tax_amount_currency,
+        sign,
+        untaxed_amount,
+        untaxed_amount_currency,
+        cash_rounding=None,
+    ):
         new_date_ref = self.env.context.get("custom_date_ref", date_ref)
-        return super().compute(value, date_ref=new_date_ref, currency=currency)
+        return super()._compute_terms(
+            date_ref=new_date_ref,
+            currency=currency,
+            company=company,
+            tax_amount=tax_amount,
+            tax_amount_currency=tax_amount_currency,
+            sign=sign,
+            untaxed_amount=untaxed_amount,
+            untaxed_amount_currency=untaxed_amount_currency,
+            cash_rounding=cash_rounding
+        )
