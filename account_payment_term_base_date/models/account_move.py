@@ -25,13 +25,12 @@ class AccountMove(models.Model):
         default=_get_default_invoice_pt_base_date,
     )
 
-    @api.onchange("invoice_pt_base_date")
-    def _onchange_invoice_pt_base_date(self):
-        self._recompute_dynamic_lines()
-
-    def _recompute_payment_terms_lines(self):
-        # ensure one is already present in base method
-        account_move = self.with_context(
-            custom_date_ref=self.invoice_pt_base_date,
-        )
-        super(AccountMove, account_move)._recompute_payment_terms_lines()
+    @api.depends("invoice_pt_base_date")
+    def _compute_needed_terms(self):
+        inv_with_pt_base_date = self.filtered(lambda x: x.invoice_pt_base_date)
+        for invoice in inv_with_pt_base_date:
+            invoice = invoice.with_context(
+                custom_date_ref=invoice.invoice_pt_base_date,
+            )
+            super(AccountMove, invoice)._compute_needed_terms()
+        super(AccountMove, self -  inv_with_pt_base_date)._compute_needed_terms()
