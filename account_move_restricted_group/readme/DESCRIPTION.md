@@ -1,1 +1,2 @@
-Restrict creation, edit and delete on tree and form view in account moves
+Restrict creation, edit and delete on account.moves and account.move.line
+by using check_access_rights()
