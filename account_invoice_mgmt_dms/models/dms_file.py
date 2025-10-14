@@ -10,7 +10,7 @@ class DmsFile(models.Model):
     _inherit = "dms.file"
 
     account_move_id = fields.Many2one('account.move', string="Invoice Files")
-    ocr_doc = fields.Html('Invoice Content', compute="_compute_ocr_doc", store=True, readonly=False)
+    ocr_doc = fields.Html('Invoice Content', compute="_compute_ocr_doc", store=True, readonly=False, recursive=True)
     proceeding = fields.Char()
     rating = fields.Selection([
         ('0', 'Low'),
@@ -41,7 +41,7 @@ class DmsFile(models.Model):
         self.account_move_id.message_post(
             body=_("Approve Invoice")
         )
-    
+
     def validate_account_move(self):
         for record in self:
             if not self.env.user.has_group("account_invoice_mgmt_dms.group_invoice_approver") and self.env.user.has_group("account_invoice_mgmt_dms.group_invoice_validator") and record.account_move_id.validator_complete_proceesing_id != self.env.user:

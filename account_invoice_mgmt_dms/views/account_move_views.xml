@@ -53,14 +53,14 @@
                 <page id="find_on_invoid" string="Invoice Info">
                     <group>
                         <group>
-                            <field name="complete_proceesing_id" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
-                            <field name="purchase_invoice_proceesing_id" attrs="{'invisible': [('purchase_invoice_proceesing_id', '=', False)]}"/>
+                            <field name="complete_proceesing_id" invisible="not complete_proceesing_id"/>
+                            <field name="purchase_invoice_proceesing_id" invisible="not purchase_invoice_proceesing_id"/>
                             <field name="state_complete_proceesing" />
-                            <field name="decline_reason_complete_proceesing" attrs="{'invisible': [('state_complete_proceesing', '!=', 'declined')]}"/>
+                            <field name="decline_reason_complete_proceesing" invisible="state_complete_proceesing != 'declined'"/>
                         </group>
                         <group>
-                            <field name="rating_complete_proceesing" widget="priority" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
-                            <field name="note_complete_proceesing" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+                            <field name="rating_complete_proceesing" widget="priority" invisible="not complete_proceesing_id"/>
+                            <field name="note_complete_proceesing" invisible="not complete_proceesing_id"/>
                         </group>
                     </group>
                     <group>
@@ -73,7 +73,7 @@
                     type="object"
                     class="oe_stat_button"
                     icon="fa-file"
-                    attrs="{'invisible': [('dms_file_count', '=', 0)]}">
+                    invisible="dms_file_count == 0">
                     <field name="dms_file_count" widget="statinfo" string="DMS File"/>
                 </button>
             </xpath>
@@ -83,26 +83,26 @@
                     name="open_wizard_dms_extra_file"
                     string="Add Extra Documents"
                     type="object"
-                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
                 <button
                     name="open_wizard_dms_file"
                     string="Add Partner Invoice"
                     type="object"
-                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
-                <button 
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+                <button
                     name="create_dms_file_document_manager"
                     string="Generate Document Manager"
                     type="object"
-                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
-                <button 
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+                <button
                     name="create_dms_file_document_manager"
                     string="Generate Document Manager with validation"
                     type="object"
                     context="{'create_dms_file_document_validate': True}"
-                    attrs="{'invisible': ['|', ('id', '=', False), '|',('ref', '=', False), '|',('state', '!=', 'posted'), ('state_complete_proceesing', '=', 'approved')]}"/>
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
             </xpath>
             <xpath expr="//group[@id='header_left_group']/field[@name='ref']" position="after">
-                <field name="validator_complete_proceesing_id" attrs="{'invisible': [('type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}"/>
+                <field name="validator_complete_proceesing_id" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
             </xpath>
         </field>
     </record>
@@ -115,7 +115,7 @@
             <xpath expr="//field[@name='state']" position="after">
                 <field name="state_complete_proceesing" />
                 <field name="complete_proceesing_id" widget="many2onebutton" optional="hide"/>
-                <field name="rating_complete_proceesing" widget="priority" attrs="{'invisible': [('complete_proceesing_id', '=', False)]}"/>
+                <field name="rating_complete_proceesing" widget="priority" invisible="not complete_proceesing_id"/>
             </xpath>
         </field>
     </record>

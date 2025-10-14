@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
     <data noupdate="1">
 
@@ -8,7 +8,7 @@
             <field name="storage_id" ref="dms_storage_document_manager"/>
             <field name="group_ids" eval='[(6,0,[ref("dms_access_group_manager")])]'/>
         </record>
-   
+
         <record id="dms_directory_complete_proceeding" model="dms.directory">
             <field name="name">1.- Complete Proceeding</field>
             <field name="is_root_directory">FALSE</field>

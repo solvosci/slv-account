@@ -72,7 +72,7 @@ class AccountMove(models.Model):
                 record.purchase_invoice_proceesing_id = purchase_invoice_file
 
     def action_post(self):
-        for record in self.filtered(lambda x: x.type in ['in_invoice', 'in_refund', 'in_receipt'] and not x.journal_id.skip_invoice_publish_validator):
+        for record in self.filtered(lambda x: x.move_type in ['in_invoice', 'in_refund', 'in_receipt'] and not x.journal_id.skip_invoice_publish_validator):
             if record.partner_id.validator_complete_proceesing_id and not record.validator_complete_proceesing_id:
                 record.validator_complete_proceesing_id = record.partner_id.validator_complete_proceesing_id
             if not record.validator_complete_proceesing_id:
@@ -116,9 +116,9 @@ class AccountMove(models.Model):
         wizard = self.open_wizard_dms('account.move.dms.extra.file.wizard')
         wizard['name'] = _('Add Extra Docs')
         return wizard
-    
+
     def validation_files(self, dms_file):
-        error = ''            
+        error = ''
         try:
             self.env['ir.actions.report']._merge_pdfs([io.BytesIO(dms_file.content_binary)])
         except Exception as e:
@@ -139,17 +139,22 @@ class AccountMove(models.Model):
             if validate:
                 error += self.validation_files(dms_file_purchase_invoice)
 
-        # streams.append(invoice_pdf)
         for purchase_order_id in self.invoice_line_ids.purchase_line_id.order_id:
             ticket_id = self.env["stock.picking.classification"].sudo().search([("picking_id.classification_purchase_order_id", "=", purchase_order_id.id)]).picking_id.move_ids_without_package
 
-            purchase_vp_pdf = io.BytesIO(self.env.ref("reports_alu.action_report_purchase_order_alumisel_vp").render_qweb_pdf(purchase_order_id.id)[0])
-            streams.append(purchase_vp_pdf)
+            purchase_vp_pdf_content, _ = self.env['ir.actions.report']._render_qweb_pdf(
+                'reports_alu.action_report_purchase_order_alumisel_vp',
+                res_ids=purchase_order_id.id
+            )
+            streams.append(io.BytesIO(purchase_vp_pdf_content))
 
             if ticket_id:
                 proceeding = ticket_id.picking_id.name
-                ticket_pdf = io.BytesIO(self.env.ref("stock_picking_mgmt_weight.action_report_move_tag").render_qweb_pdf(ticket_id.id)[0])
-                streams.append(ticket_pdf)
+                ticket_pdf_content, _ = self.env['ir.actions.report']._render_qweb_pdf(
+                    'stock_picking_mgmt_weight.action_report_move_tag',
+                    res_ids=ticket_id.id
+                )
+                streams.append(io.BytesIO(ticket_pdf_content))
 
             dms_file_carrier_ids = self.env['dms.file'].sudo().search([('proceeding', '=', proceeding), ('directory_id', '=', self.env.ref('account_invoice_mgmt_dms.dms_directory_carrier_doc').id)])
             if dms_file_carrier_ids:
@@ -172,12 +177,12 @@ class AccountMove(models.Model):
 
         if error:
             raise ValidationError(_("Error in files: %s \n Must uploaded again") % error)
-        
+
         attachment = self.env['ir.actions.report']._merge_pdfs(streams)
 
         # Save the PDF to a temporary file
         with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_pdf:
-            temp_pdf.write(attachment)
+            temp_pdf.write(attachment.getvalue())
             temp_pdf_path = temp_pdf.name
 
         # Compress PDF using Ghostscript
@@ -261,10 +266,10 @@ class AccountMove(models.Model):
             raise ValidationError(
                     _("No selected invoice has the supplier invoice stored")
                 )
-        
+
     def action_download_purchase_invoice(self):
         return self.action_download_document('purchase_invoice_proceesing_id', 'download_purchase_invoice')
-    
+
     def action_download_complete_proceesing(self):
         return self.action_download_document('complete_proceesing_id', 'download_complete_proceesing')
 

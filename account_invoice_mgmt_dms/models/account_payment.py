@@ -12,7 +12,6 @@ class AccountPayment(models.Model):
         active_ids = self.env.context.get('active_ids')
         if not active_ids:
             return ''
-        # ('type', '=', 'in_invoice')
         invoice_ids = self.env['account.move'].browse(active_ids)
         pending_invoice_ids = invoice_ids.filtered(lambda x: x.state_complete_proceesing in ['pending', 'validated', 'declined'])
         requires_invoice_approval = invoice_ids.filtered(lambda x: not x.payment_mode_id.skip_invoice_approval)

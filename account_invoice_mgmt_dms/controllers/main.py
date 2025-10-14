@@ -6,7 +6,7 @@ import zipfile
 
 
 class Binary(http.Controller):
-    
+
     def _download_files(self, invoice_ids, file_field):
         invoice_ids = request.env['account.move'].browse(map(int, invoice_ids.split(',')))
         with io.BytesIO() as zip_buffer:
@@ -21,7 +21,7 @@ class Binary(http.Controller):
             zip_data = zip_buffer.read()
 
         return zip_data
-    
+
     @http.route('/account_invoice_mgmt_dms/download_purchase_invoice', type='http', auth="user")
     def download_purchase_invoice(self, ids, **kw):
         return request.make_response(self._download_files(ids, 'purchase_invoice_proceesing_id'), [('Content-Type', 'application/zip'), ('Content-Disposition', 'attachment; filename=%s.zip' % _('invoice_files'))])

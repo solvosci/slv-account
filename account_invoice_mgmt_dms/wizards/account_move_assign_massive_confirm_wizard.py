@@ -8,7 +8,7 @@ class AccountMoveAssignMasiveConfirmWizard(models.TransientModel):
     _name = 'account.move.assign.massive.confirm.wizard'
     _description = 'account.move.assign.massive.confirm.wizard'
 
-    invoice_ids = fields.Many2many('account.move', readonly=1)
+    invoice_ids = fields.Many2many('account.move', readonly=True)
 
     def approve(self):
         for record in self.invoice_ids:

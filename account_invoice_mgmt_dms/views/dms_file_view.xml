@@ -15,27 +15,27 @@
         <field name="inherit_id" ref="dms.view_dms_file_form" />
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button 
+                <button
                     name="validate_account_move"
                     string="Validate"
                     class="btn-primary"
-                    attrs="{'invisible': [('state_account_move', '!=', 'pending')]}"
+                    invisible="state_account_move != 'pending'"
                     type="object"
                     groups="account_invoice_mgmt_dms.group_invoice_validator"
                 />
-                <button 
+                <button
                     name="approve_account_move"
                     string="Approve"
                     class="btn-primary"
-                    attrs="{'invisible': [('state_account_move', 'not in', ['pending', 'validated'])]}"
+                    invisible="state_account_move not in ['pending', 'validated']"
                     type="object"
                     groups="account_invoice_mgmt_dms.group_invoice_approver"
                 />
-                <button 
+                <button
                     name="decline_account_move"
                     string="Decline"
                     class="btn-primary"
-                    attrs="{'invisible': [('state_account_move', 'not in', ['pending', 'validated'])]}"
+                    invisible="state_account_move not in ['pending', 'validated']"
                     type="object"
                     groups="account_invoice_mgmt_dms.group_invoice_validator"
                 />
@@ -53,8 +53,8 @@
                 <field name="rating" widget="priority"/>
                 <field name="proceeding" />
                 <field name="complete_proceeding" invisible="1"/>
-                <field name="state_account_move" attrs="{'invisible': [('complete_proceeding', '=', False)]}"/>
-                <field name="decline_reason" attrs="{'invisible': [('state_account_move', '!=', 'declined')]}" />
+                <field name="state_account_move" invisible="not complete_proceeding"/>
+                <field name="decline_reason" invisible="state_account_move != 'declined'" />
             </xpath>
         </field>
     </record>

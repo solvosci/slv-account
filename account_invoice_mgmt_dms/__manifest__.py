@@ -5,7 +5,7 @@
     "summary": """
         Adds the possibility to read Invoice data from local to dms for bind and upload
     """,
-    "version": "13.0.1.10.0",
+    "version": "17.0.1.0.0",
     "category": "Accounting & Finance",
     "website": "https://github.com/solvosci/slv-account",
     "author": "Solvos",
@@ -20,6 +20,7 @@
         "account_payment_order",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "security/account_invoice_mgmt_dms_security.xml",
         "data/dms_access_group.xml",
         "data/dms_storage.xml",
