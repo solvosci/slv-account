@@ -7,13 +7,10 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "17.0.1.0.0",
+    "version": "17.0.2.0.0",
     "category": "Account",
     "website": "https://github.com/solvosci/slv-account",
     "depends": ["account"],
-    "data": [
-        "views/account_move_view.xml"
-    ],
+    "data": [],
     "installable": True,
-    "uninstall_hook": "uninstall_hook",
 }
