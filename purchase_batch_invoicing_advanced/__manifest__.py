@@ -8,15 +8,14 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "13.0.1.0.0",
+    "version": "17.0.1.0.0",
     'category': "Purchases",
     "website": "https://github.com/solvosci/slv-account",
     "depends": [
-        "purchase_batch_invoicing",
         "purchase_order_type_advanced"
     ],
     "data": [
-        "views/purchase_batch_invoicing_advanced.xml"
+        "views/purchase_order.xml"
     ],
     'installable': True,
 }
