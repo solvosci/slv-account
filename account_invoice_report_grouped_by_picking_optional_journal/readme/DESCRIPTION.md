@@ -1,0 +1,1 @@
+Allows choosing for each journal whether to group invoice lines by picking or not. This means that, from the configuration of every accounting journal, you can decide whether invoices created from that journal should apply the picking-based grouping or skip it.
