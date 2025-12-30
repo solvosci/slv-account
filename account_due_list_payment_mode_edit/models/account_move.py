@@ -1,3 +1,6 @@
+# © 2025 Solvos Consultoría Informática (<http://www.solvos.es>)
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+
 from odoo import fields, models
 
 
@@ -12,9 +15,9 @@ class AccountMove(models.Model):
         for move in self:
             if move.is_invoice():
                 payments = move.line_ids.filtered(
-                    lambda r: r.account_internal_type in (
-                        "receivable",
-                        "payable",
+                    lambda r: r.account_type in (
+                        "asset_receivable",
+                        "liability_payable",
                     ))
                 move.payments_count = len(payments)
             else:
@@ -30,12 +33,11 @@ class AccountMove(models.Model):
     def action_view_payments(self):
         self.ensure_one()
         payments = self.line_ids.filtered(
-            lambda r: r.account_internal_type in (
-                "receivable",
-                "payable",
+            lambda r: r.account_type in (
+                "asset_receivable",
+                "liability_payable",
             ))
-        action = self.env.ref(
-            'account_due_list.action_invoice_payments').read()[0]
+        action = self.env['ir.actions.act_window']._for_xml_id("account_due_list.action_invoice_payments")
         if len(payments) > 1:
             action['domain'] = [('id', 'in', payments.ids)]
         elif len(payments) == 1:

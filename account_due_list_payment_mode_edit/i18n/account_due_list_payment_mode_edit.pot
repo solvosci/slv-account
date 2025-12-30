@@ -23,39 +23,35 @@ msgid ""
 "        depending on due type (payable or receivable)\n"
 "        "
 msgstr ""
-"\n"
-"        Campo técnico que permite la selección de modo de pago\n"
-"        dependiendo del tipo de vencimiento (por pagar o por cobrar)\n"
-"        "
 
 #. module: account_due_list_payment_mode_edit
 #: model:ir.model,name:account_due_list_payment_mode_edit.model_account_move
 msgid "Journal Entry"
-msgstr "Asientos contables"
+msgstr ""
 
 #. module: account_due_list_payment_mode_edit
 #: model:ir.model,name:account_due_list_payment_mode_edit.model_account_move_line
 msgid "Journal Item"
-msgstr "Apunte contable"
+msgstr ""
 
 #. module: account_due_list_payment_mode_edit
 #: model:ir.model.fields,field_description:account_due_list_payment_mode_edit.field_account_move_line__payment_mode_id
 msgid "Payment Mode"
-msgstr "Modo de pago"
+msgstr ""
 
 #. module: account_due_list_payment_mode_edit
 #: model:ir.model.fields,field_description:account_due_list_payment_mode_edit.field_account_move_line__payment_mode_type
 msgid "Payment Mode Type"
-msgstr "Tipo de modo de pago"
+msgstr ""
 
 #. module: account_due_list_payment_mode_edit
 #: model_terms:ir.ui.view,arch_db:account_due_list_payment_mode_edit.account_move_payments
 msgid "Payments"
-msgstr "Efectos"
+msgstr ""
 
 #. module: account_due_list_payment_mode_edit
 #: model:ir.model.fields,field_description:account_due_list_payment_mode_edit.field_account_bank_statement_line__payments_count
 #: model:ir.model.fields,field_description:account_due_list_payment_mode_edit.field_account_move__payments_count
 #: model:ir.model.fields,field_description:account_due_list_payment_mode_edit.field_account_payment__payments_count
 msgid "Payments Count"
-msgstr "Número de efectos"
+msgstr ""
