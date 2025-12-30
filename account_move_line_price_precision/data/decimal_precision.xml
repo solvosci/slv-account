@@ -1,0 +1,10 @@
+<odoo>
+
+    <data noupdate="1">
+        <record id="product_price_account_move_line" model="decimal.precision">
+            <field name="name">Product price - for Account Move Line</field>
+            <field name="digits">2</field>
+        </record>
+    </data>
+
+</odoo>
