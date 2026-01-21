@@ -1,20 +1,21 @@
 <odoo>
     <template id="document_tax_totals_template_total_refund" inherit_id="account.document_tax_totals_template">
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="before">
-                <t t-set="total_doc" t-value="doc or o" />
+                <t t-set="total_doc" t-value="doc or o or False" />
         </xpath>
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
             <attribute name="t-if">
+                total_doc != False and (
                 total_doc._name != 'account.move' or (
                     total_doc._name == 'account.move' and
                     total_doc.move_type not in ['in_refund', 'out_refund']
-                )
+                ))
             </attribute>
         </xpath>
 
 
         <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
-            <t t-if="total_doc._name == 'account.move' and total_doc.move_type in ['in_refund', 'out_refund']">
+            <t t-if="total_doc != False and (total_doc._name == 'account.move' and total_doc.move_type in ['in_refund', 'out_refund'])">
                 <strong style="color: red">Total Refund</strong>
             </t>
         </xpath>
@@ -22,19 +23,20 @@
 
     <template id="document_tax_totals_company_currency_template_refund" inherit_id="account.document_tax_totals_company_currency_template">
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="before">
-                <t t-set="total_doc" t-value="doc or o" />
+                <t t-set="total_doc" t-value="doc or o or False" />
         </xpath>
         <xpath expr="//tr[contains(@class, 'o_total')]//strong" position="attributes">
                 <attribute name="t-if">
+                    total_doc != False and (
                     total_doc._name != 'account.move' or (
                         total_doc._name == 'account.move' and
                         total_doc.move_type not in ['in_refund', 'out_refund']
-                    )
+                    ))
                 </attribute>
         </xpath>
 
         <xpath expr="//tr[contains(@class, 'o_total')]/td" position="inside">
-            <t t-if="total_doc._name == 'account.move' and total_doc.move_type in ['in_refund', 'out_refund']">
+            <t t-if="total_doc != False and (total_doc._name == 'account.move' and total_doc.move_type in ['in_refund', 'out_refund'])">
                 <strong style="color: red">Total Refund</strong>
             </t>
         </xpath>
