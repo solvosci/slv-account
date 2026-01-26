@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 11:06+0000\n"
-"PO-Revision-Date: 2024-03-05 11:06+0000\n"
+"POT-Creation-Date: 2026-07-08 11:20+0000\n"
+"PO-Revision-Date: 2026-07-08 11:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,18 @@ msgstr ""
 
 #. module: account_move_promissory_note
 #: model:ir.model,name:account_move_promissory_note.model_account_move
-msgid "Journal Entries"
+msgid "Journal Entry"
 msgstr ""
 
 #. module: account_move_promissory_note
-#: model:ir.model.fields,field_description:account_move_promissory_note.field_account_move__payment_ids
-msgid "Payment"
-msgstr ""
-
-#. module: account_move_promissory_note
+#: model:ir.model.fields,field_description:account_move_promissory_note.field_account_bank_statement_line__payment_date
 #: model:ir.model.fields,field_description:account_move_promissory_note.field_account_move__payment_date
+#: model:ir.model.fields,field_description:account_move_promissory_note.field_account_payment__payment_date
 msgid "Payment Date"
 msgstr ""
 
 #. module: account_move_promissory_note
+#: model:ir.model.fields,field_description:account_move_promissory_note.field_account_bank_statement_line__promissory_note_number
 #: model:ir.model.fields,field_description:account_move_promissory_note.field_account_move__promissory_note_number
 msgid "Promissory Note Number"
 msgstr ""
