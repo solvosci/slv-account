@@ -7,16 +7,29 @@ from odoo import models, fields, api
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    payment_ids = fields.Many2many('account.payment', 'account_invoice_payment_rel', 'invoice_id' , 'payment_id', copy=False)
     promissory_note_number = fields.Char(compute='_compute_promissory_note_number', store=True)
     payment_date = fields.Date(compute='_compute_payment_date', store=True)
 
-    @api.depends('payment_ids.promissory_note_number')
+    @api.depends(
+        'line_ids.payment_id.promissory_note_number',
+        'line_ids.matched_debit_ids.debit_move_id.payment_id.promissory_note_number',
+        'line_ids.matched_debit_ids.credit_move_id.payment_id.promissory_note_number',
+        'line_ids.matched_credit_ids.debit_move_id.payment_id.promissory_note_number',
+        'line_ids.matched_credit_ids.credit_move_id.payment_id.promissory_note_number',
+    )
     def _compute_promissory_note_number(self):
-        for record in self:
-            record.promissory_note_number = ', '.join(record.payment_ids.filtered(lambda x: x.promissory_note_number).mapped('promissory_note_number'))
-    
-    @api.depends('payment_ids.payment_date')
+        for move in self:
+            payments = move._get_reconciled_payments() | move.line_ids.payment_id
+            numbers = list(dict.fromkeys(payments.mapped('promissory_note_number')))
+            move.promissory_note_number = ', '.join(filter(None, numbers)) or False
+
+    @api.depends(
+        'line_ids.matched_debit_ids',
+        'line_ids.matched_credit_ids',
+        'line_ids.payment_id.date'
+    )
     def _compute_payment_date(self):
-        for record in self:
-            record.payment_date = max((payment.payment_date for payment in record.payment_ids if payment.payment_date), default=None)
+        for move in self:
+            payments = move._get_reconciled_payments()
+            dates = payments.mapped('date')
+            move.payment_date = max(dates) if dates else False

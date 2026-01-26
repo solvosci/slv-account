@@ -4,10 +4,11 @@
     "name": "Account Move Promissory Note",
     "summary": """
         Adds promissory note in account move tree view
+        It also provides the most recent payment date on the moves
     """,
     "author": "Solvos",
     "license": "AGPL-3",
-    "version": "13.0.1.2.0",
+    "version": "17.0.1.0.0",
     'category': "Account",
     "website": "https://github.com/solvosci/slv-account",
     "depends": [
