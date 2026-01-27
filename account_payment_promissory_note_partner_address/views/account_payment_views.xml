@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_account_payment_form" model="ir.ui.view">
-        <field name="name">account.payment.form</field>
+    <record id="view_account_payment_form_promissory_note" model="ir.ui.view">
+        <field name="name">account.payment.form (account_payment_promissory_note_partner_address)</field>
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='company_id']" position="after">
-                <field name="payment_partner_id" force_save="1"/>
+            <xpath expr="//field[@name='payment_type']" position="after">
+                <field name="payment_partner_id" force_save="1" readonly="state != 'draft'"/>
             </xpath>
         </field>
     </record>

@@ -11,13 +11,6 @@ class AccountPayment(models.Model):
         comodel_name="res.partner",
         compute='_compute_payment_partner_id',
         store=True,
-        readonly=False,
-        states={
-            'posted': [('readonly', True)],
-            'sent': [('readonly', True)],
-            'reconciled': [('readonly', True)],
-            'cancelled': [('readonly', True)],          
-        },
     )
 
     @api.depends('partner_id')
