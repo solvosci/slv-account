@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_invoice_tree" model="ir.ui.view">
+        <field name="name">account.move.tree (account_invoice_purchase_payment_date)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date_due']" position="before">
+                <field name="expected_payment_date" optional="show" invisible="context.get('default_type') != 'in_invoice'" string="Exp. Pay. Date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter" model="ir.ui.view">
+        <field name="name">account.move.search (account_invoice_purchase_payment_date)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='duedate']" position="before">
+                <filter name="expected_payment_date" string="Expected Payment Date" context="{'group_by': 'expected_payment_date'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form (account_invoice_purchase_payment_date)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="expected_payment_date" attrs="{'invisible': [('type', '!=', 'in_invoice')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
