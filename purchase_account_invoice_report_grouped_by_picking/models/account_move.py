@@ -4,96 +4,130 @@
 from collections import OrderedDict
 
 from odoo import models
-from odoo.tools import float_is_zero
-
+from odoo.tools import float_round
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    def _get_document_data(self):
-        """
-        If needed, extend or modify it
-        """
-        return {
-            "in": {
-                "type_refund": "in_refund",
-                "document_id": "purchase_id",
-                "location_usages": ["supplier"],
-                "line_ids": "purchase_line_id",
-                "sign": -1.0,
-            },
-            "out": {
-                "type_refund": "out_refund",
-                "document_id": "sale_id",
-                "location_usages": ["customer"],
-                "line_ids": "sale_line_ids",
-                "sign": 1.0,
-            },
-        }
+    def _get_signed_quantity_done(self, invoice_line, move, sign):
+        if not self.picking_ids.purchase_id:
+            return super()._get_signed_quantity_done(invoice_line, move, sign)
+
+        if move.location_dest_id.usage == "internal":
+            return move.quantity * sign
+
+        if move.location_id.usage == "internal":
+            return -move.quantity * sign
+
+        return 0
 
     def lines_grouped_by_picking(self):
         """This prepares a data structure for printing the invoice report
         grouped by pickings.
-        This method is fully overwritten from 
+        This method is fully overwritten from
         account_invoice_report_grouped_by_picking addon
         """
+        if not self.picking_ids.purchase_id:
+            return super().lines_grouped_by_picking()
+
         self.ensure_one()
-        picking_dict = OrderedDict()
-        lines_dict = OrderedDict()
+        picking_dict = {}
+        lines_dict = {}
+        picking_obj = self.env["stock.picking"]
 
-        document_data = self._get_document_data()
-
-        inv_type = "in" if self.type in ("in_invoice", "in_refund", "in_receipt") else "out"        
-
-        # Not change sign if the credit note has been created from reverse move option
-        # and it has the same pickings related than the reversed invoice instead of sale
-        # order invoicing process after picking reverse transfer
         sign = (
             -1.0
-            if self.type == document_data[inv_type]["type_refund"]
+            if self.move_type == "out_refund"
             and (
                 not self.reversed_entry_id
                 or self.reversed_entry_id.picking_ids != self.picking_ids
             )
             else 1.0
         )
-        sign *= document_data[inv_type]["sign"]
-        # Let's get first a correspondance between pickings and sales order
-        doc_dict = {x[document_data[inv_type]["document_id"]]: x for x in self.picking_ids if x[document_data[inv_type]["document_id"]]}
-        # Compatibility with solvosci/slv-account/account_invoice_report_gbp_dmm
-        #  without need of addons strict dependency
-        selfctx = self.with_context(
-            signed_quantity_done_endloc=document_data[inv_type]["location_usages"],
-            signed_quantity_done_qtyfield="quantity_done" if inv_type == "in" else False,
-        )
-        # Now group by picking by direct link or via same SO as picking's one
-        for line in self.invoice_line_ids.filtered(lambda x: not x.display_type):
+
+        po_dict = {p.purchase_id: p for p in self.picking_ids if p.purchase_id}
+
+        previous_section = previous_note = False
+        last_section_notes = []
+        sorted_lines = self._get_grouped_by_picking_sorted_lines()
+        for line in sorted_lines:
+
+            if line.display_type in ["line_section", "line_note"]:
+                if line.display_type == "line_section":
+                    previous_section = line
+                else:
+                    previous_note = line
+                last_section_notes.append(
+                    {
+                        "picking": picking_obj,
+                        "line": line,
+                        "qty": 0.0,
+                        "is_last_section_notes": True,
+                    }
+                )
+                continue
+
+            last_section_notes = []
+            has_returned_qty = False
             remaining_qty = line.quantity
+
             for move in line.move_line_ids:
                 key = (move.picking_id, line)
-                picking_dict.setdefault(key, 0)
-                qty = selfctx._get_signed_quantity_done(line, move, sign)
-                picking_dict[key] += qty
+                self._process_section_note_lines_grouped(
+                    previous_section, previous_note, picking_dict, move.picking_id
+                )
+                qty = self._get_signed_quantity_done(line, move, sign)
+                picking_dict[key] = picking_dict.get(key, 0.0) + qty
                 remaining_qty -= qty
-            if not line.move_line_ids and line[document_data[inv_type]["line_ids"]]:
-                for so_line in line[document_data[inv_type]["line_ids"]]:
-                    if doc_dict.get(so_line.order_id):
-                        key = (doc_dict[so_line.order_id], line)
-                        picking_dict.setdefault(key, 0)
-                        qty = so_line.product_uom_qty
-                        picking_dict[key] += qty
+                if move.location_id.usage == "supplier":
+                    has_returned_qty = True
+
+            if not line.move_line_ids and line.purchase_line_id:
+                for po_line in line.purchase_line_id:
+                    picking = po_dict.get(po_line.order_id)
+                    if picking:
+                        key = (picking, line)
+                        self._process_section_note_lines_grouped(
+                            previous_section, previous_note, picking_dict, picking
+                        )
+                        qty = min(po_line.product_qty, remaining_qty)
+                        picking_dict[key] = picking_dict.get(key, 0.0) + qty
                         remaining_qty -= qty
-            if not float_is_zero(
+
+            elif not line.move_line_ids and not line.purchase_line_id:
+                key = (picking_obj, line)
+                self._process_section_note_lines_grouped(
+                    previous_section, previous_note, lines_dict
+                )
+                qty = line.quantity
+                picking_dict[key] = picking_dict.get(key, 0.0) + qty
+                remaining_qty -= qty
+
+            remaining_qty = float_round(
                 remaining_qty,
                 precision_rounding=line.product_id.uom_id.rounding or 0.01,
+            )
+            if (
+                self.move_type == "in_refund"
+                and not has_returned_qty
+                and remaining_qty
+                and line.product_id.type != "service"
+                and picking_dict
             ):
+                remaining_qty = 0.0
+                for key in picking_dict:
+                    picking_dict[key] = abs(picking_dict[key])
+            if remaining_qty:
+                self._process_section_note_lines_grouped(
+                    previous_section, previous_note, lines_dict
+                )
                 lines_dict[line] = remaining_qty
         no_picking = [
-            {"picking": False, "line": key, "quantity": value}
+            {"picking": picking_obj, "line": key, "quantity": value}
             for key, value in lines_dict.items()
         ]
         with_picking = [
             {"picking": key[0], "line": key[1], "quantity": value}
             for key, value in picking_dict.items()
         ]
-        return no_picking + self._sort_grouped_lines(with_picking)
+        return no_picking + self._sort_grouped_lines(with_picking + last_section_notes)
