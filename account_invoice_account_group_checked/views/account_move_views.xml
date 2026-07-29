@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_move_form_inherit_checked" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.account_invoice_account_group_checked</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='header_right_group']/field[@name='currency_id']"
+                   position="after">
+                <field name="has_account_checked_group"
+                       readonly="1"
+                       groups="base.group_no_one"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter_inherit_checked" model="ir.ui.view">
+        <field name="name">account.invoice.select.inherit.account_invoice_account_group_checked</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <filter name="late" position="after">
+                <separator/>
+                <filter name="has_account_checked_group"
+                        string="Has Checked Account Group"
+                        domain="[('has_account_checked_group', '=', True)]"/>
+                <filter name="no_account_checked_group"
+                        string="Has No Checked Account Group"
+                        domain="[('has_account_checked_group', '=', False)]"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>
