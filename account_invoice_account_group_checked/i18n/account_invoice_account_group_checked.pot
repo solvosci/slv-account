@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_account_group_checked
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-29 15:12+0000\n"
+"PO-Revision-Date: 2026-07-29 15:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model,name:account_invoice_account_group_checked.model_account_group
+msgid "Account Group"
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model.fields,field_description:account_invoice_account_group_checked.field_account_move__has_account_checked_group
+msgid "Has Account Checked Group"
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model_terms:ir.ui.view,arch_db:account_invoice_account_group_checked.view_account_invoice_filter_inherit_checked
+msgid "Has Checked Account Group"
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model_terms:ir.ui.view,arch_db:account_invoice_account_group_checked.view_account_invoice_filter_inherit_checked
+msgid "Has No Checked Account Group"
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model.fields,help:account_invoice_account_group_checked.field_account_group__will_check_invoice
+msgid ""
+"If checked, any invoice that has a line using an account belonging to this "
+"group will be flagged through the \"Has Account Checked Group\" field on the"
+" invoice."
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model,name:account_invoice_account_group_checked.model_account_move
+msgid "Journal Entries"
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model.fields,help:account_invoice_account_group_checked.field_account_move__has_account_checked_group
+msgid ""
+"True if at least one invoice line uses an account belonging to an account "
+"group flagged as \"Will Check Invoice\"."
+msgstr ""
+
+#. module: account_invoice_account_group_checked
+#: model:ir.model.fields,field_description:account_invoice_account_group_checked.field_account_group__will_check_invoice
+msgid "Will Check Invoice"
+msgstr ""
