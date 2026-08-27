@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cash_flow_category_tree" model="ir.ui.view">
+        <field name="name">cash.flow.forecast.category.tree</field>
+        <field name="model">cash.flow.forecast.category</field>
+        <field name="arch" type="xml">
+            <tree string="Cash Flow Forecast Categories">
+                <field name="complete_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cash_flow_category_form" model="ir.ui.view">
+        <field name="name">cash.flow.forecast.category.form</field>
+        <field name="model">cash.flow.forecast.category</field>
+        <field name="arch" type="xml">
+            <form string="Forecast Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id" options="{'no_create': True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cash_flow_category" model="ir.actions.act_window">
+        <field name="name">Forecast Categories</field>
+        <field name="res_model">cash.flow.forecast.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_cash_flow_category_root"
+        name="Forecast Categories"
+        parent="mis_builder.mis_report_conf_menu"
+        action="action_cash_flow_category"
+        sequence="45"/>
+</odoo>
