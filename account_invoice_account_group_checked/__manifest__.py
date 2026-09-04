@@ -2,7 +2,7 @@
 # License LGPL-3 - See http://www.gnu.org/licenses/lgpl-3.0.html
 {
     "name": "Account Invoice Account Group Checked",
-    "version": "13.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Accounting/Accounting",
     "summary": "Marks invoices when there are certain accounts involved, depending on their account group",
     "author": "Solvos",

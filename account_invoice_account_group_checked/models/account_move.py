@@ -10,7 +10,6 @@ class AccountMove(models.Model):
         string='Has Account Checked Group',
         compute='_compute_has_account_checked_group',
         store=True,
-        readonly=True,
         copy=False,
         help='True if at least one invoice line uses an account belonging '
              'to an account group flagged as "Will Check Invoice".',
