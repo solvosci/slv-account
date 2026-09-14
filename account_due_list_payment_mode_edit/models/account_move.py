@@ -27,7 +27,12 @@ class AccountMove(models.Model):
         res = super(AccountMove, self).action_post()
         for move in self:
             if move.is_invoice():
-                move.line_ids._compute_payment_mode()
+                move.line_ids.filtered(
+                    lambda x: x.account_type in (
+                        "asset_receivable",
+                        "liability_payable"
+                    )
+                )._compute_payment_mode()
         return res
 
     def action_view_payments(self):
