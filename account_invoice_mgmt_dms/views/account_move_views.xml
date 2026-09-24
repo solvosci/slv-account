@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_account_move_validate_complete_processing" model="ir.actions.server">
+        <field name="name">Validate documentation</field>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_validate_complete_processing()
+        </field>
+    </record>
+
+    <record id="action_account_move_approve_complete_processing" model="ir.actions.server">
+        <field name="name">Approve documentation</field>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_approve_complete_processing()
+        </field>
+    </record>
+
+    <record id="action_account_move_download_purchase_invoice" model="ir.actions.server">
+        <field name="name">Download Purchase Invoice</field>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_download_purchase_invoice()
+        </field>
+    </record>
+
+    <record id="action_account_move_download_complete_proceesing" model="ir.actions.server">
+        <field name="name">Download Complete Proceesing</field>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_download_complete_proceesing()
+        </field>
+    </record>
+
+    <record id="view_account_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page id="find_on_invoid" string="Invoice Info">
+                    <group>
+                        <group>
+                            <field name="complete_proceesing_id" invisible="not complete_proceesing_id"/>
+                            <field name="purchase_invoice_proceesing_id" invisible="not purchase_invoice_proceesing_id"/>
+                            <field name="state_complete_proceesing" />
+                            <field name="decline_reason_complete_proceesing" invisible="state_complete_proceesing != 'declined'"/>
+                        </group>
+                        <group>
+                            <field name="rating_complete_proceesing" widget="priority" invisible="not complete_proceesing_id"/>
+                            <field name="note_complete_proceesing" invisible="not complete_proceesing_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="ocr_doc" />
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_dms_files"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file"
+                    invisible="dms_file_count == 0">
+                    <field name="dms_file_count" widget="statinfo" string="DMS File"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <field name="ref" invisible="1"/>
+                <button
+                    name="open_wizard_dms_extra_file"
+                    string="Add Extra Documents"
+                    type="object"
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+                <button
+                    name="open_wizard_dms_file"
+                    string="Add Partner Invoice"
+                    type="object"
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+                <button
+                    name="create_dms_file_document_manager"
+                    string="Generate Document Manager"
+                    type="object"
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+                <button
+                    name="create_dms_file_document_manager"
+                    string="Generate Document Manager with validation"
+                    type="object"
+                    context="{'create_dms_file_document_validate': True}"
+                    invisible="not id or not ref or state != 'posted' or  state_complete_proceesing == 'approved'"/>
+            </xpath>
+            <xpath expr="//group[@id='header_left_group']/field[@name='ref']" position="after">
+                <field name="validator_complete_proceesing_id" invisible="move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_move_tree_inherit" model="ir.ui.view">
+        <field name="name">account.move.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="state_complete_proceesing" />
+                <field name="complete_proceesing_id" widget="many2onebutton" optional="hide"/>
+                <field name="rating_complete_proceesing" widget="priority" invisible="not complete_proceesing_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_move_search_inherit" model="ir.ui.view">
+        <field name="name">account.move.search</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="ocr_doc" />
+            </xpath>
+            <xpath expr="//filter[@name='due_date']" position="after">
+                <filter name="state_complete_proceesing_my_pending" string="My pending to validate" domain="[('validator_complete_proceesing_id', '=', uid), ('state_complete_proceesing', '=', 'pending')]"/>
+                <separator/>
+                <filter name="state_complete_proceesing_pending" string="Pending" domain="[('state_complete_proceesing', '=', 'pending')]"/>
+                <filter name="state_complete_proceesing_validated" string="Validated" domain="[('state_complete_proceesing', '=', 'validated')]"/>
+                <filter name="state_complete_proceesing_approved" string="Approved" domain="[('state_complete_proceesing', '=', 'approved')]"/>
+                <filter name="state_complete_proceesing_declined" string="Declined" domain="[('state_complete_proceesing', '=', 'declined')]"/>
+            </xpath>
+            <xpath expr="//filter[@name='duedate']" position="after">
+                <filter string="Doc State" name="state_complete_proceesing_group_by" context="{'group_by': 'state_complete_proceesing'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

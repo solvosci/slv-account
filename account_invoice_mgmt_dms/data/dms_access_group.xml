@@ -1,0 +1,11 @@
+
+<odoo>
+
+    <record id="dms_access_group_manager" model="dms.access.group">
+        <field name="name">Manager</field>
+        <field name="perm_create">TRUE</field>
+        <field name="perm_write">TRUE</field>
+        <field name="perm_unlink">TRUE</field>
+    </record>
+
+</odoo>

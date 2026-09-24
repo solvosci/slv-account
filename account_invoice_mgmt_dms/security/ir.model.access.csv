@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_move_assign_massive_confirm_wizard,account.move.assign.massive.confirm.wizard user,account_invoice_mgmt_dms.model_account_move_assign_massive_confirm_wizard,,1,1,1,1
+account_move_dms_extra_file_wizard,account.move.dms.extra.file.wizard user,account_invoice_mgmt_dms.model_account_move_dms_extra_file_wizard,,1,1,1,1
+account_move_dms_file_wizard,account.move.dms.file.wizard user,account_invoice_mgmt_dms.model_account_move_dms_file_wizard,,1,1,1,1
+dms_file_decline_account_move_wizard,dms.file.decline.account.move.wizard user,account_invoice_mgmt_dms.model_dms_file_decline_account_move_wizard,,1,1,1,1
+stock_move_dms_file_wizard,stock.move.dms.file.wizard user,account_invoice_mgmt_dms.model_stock_move_dms_file_wizard,,1,1,1,1
