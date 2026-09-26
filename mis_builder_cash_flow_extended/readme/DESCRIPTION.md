@@ -1,0 +1,1 @@
+Cash flow forecast line categories and recurrent cash flow plans.
